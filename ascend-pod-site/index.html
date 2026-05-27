@@ -747,20 +747,11 @@ async function loadPipeline() {
     // Re-map podMember on the frontend using first-name match against ownerName,
     // since HUBSPOT_OWNER_* env vars may not be configured in Netlify.
     const POD_NAMES = ['Doug', 'Michelle', 'Rebecca', 'Trice'];
-    const cutoff = new Date('2026-01-01');
-    _allDeals = (data.deals || [])
-      .map(d => {
-        const first = (d.ownerName || '').split(' ')[0];
-        const match = POD_NAMES.find(n => n.toLowerCase() === first.toLowerCase());
-        return { ...d, podMember: match || d.podMember || 'Other' };
-      })
-      .filter(d => {
-        // For closed/won deals, only show 2026+. Open/active deals always show.
-        const stage = (d.stage || '').toLowerCase();
-        const isClosed = stage === 'closedwon' || stage === 'closedlost';
-        if (isClosed && d.closeDate && new Date(d.closeDate) < cutoff) return false;
-        return true;
-      });
+    _allDeals = (data.deals || []).map(d => {
+      const first = (d.ownerName || '').split(' ')[0];
+      const match = POD_NAMES.find(n => n.toLowerCase() === first.toLowerCase());
+      return { ...d, stage: d.stage || '', podMember: match || d.podMember || 'Other' };
+    });
     renderPipeline(_allDeals);
     $('last-updated').textContent = 'Updated ' + now();
     $('footer-updated').textContent = 'Pipeline: live · Static data: ' + (window._staticDate || '—');
@@ -777,7 +768,7 @@ async function loadPipeline() {
 
 function renderPipeline(deals) {
   // Stats
-  const openDeals = deals.filter(d => d.stage.toLowerCase() !== 'closedlost');
+  const openDeals = deals.filter(d => (d.stage || '').toLowerCase() !== 'closedlost');
   const proposals = deals.filter(d => {
     const s = d.stage.toLowerCase();
     return s.includes('proposal') || s.includes('3a');
