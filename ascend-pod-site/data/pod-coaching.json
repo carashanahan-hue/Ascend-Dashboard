@@ -3,243 +3,47 @@
   "coaches": [
     {
       "coach": "Doug",
-      "engagements": [
-        {
-          "client": "Rula Health",
-          "coachee": "Leadership Team",
-          "type": "Team Coaching",
-          "startDate": "2026-01-01",
-          "endDate": "2026-06-30",
-          "status": "active",
-          "rum2026": 666664,
-          "notes": "Symmetrical coaching model, full team"
-        },
-        {
-          "client": "HealthEquity",
-          "coachee": "SLT",
-          "type": "Team Coaching",
-          "startDate": "2026-02-01",
-          "endDate": "2027-01-31",
-          "status": "active",
-          "rum2026": 206250,
-          "notes": "Yearlong SLT support"
-        },
-        {
-          "client": "Allvue",
-          "coachee": "ELT",
-          "type": "Executive Team",
-          "startDate": "2026-01-01",
-          "endDate": "2026-12-31",
-          "status": "active",
-          "rum2026": 385000,
-          "notes": "Quarterly ELT support"
-        },
-        {
-          "client": "CoreWeave",
-          "coachee": "CFO",
-          "type": "Exec Coaching",
-          "startDate": "2026-01-01",
-          "endDate": "2026-06-30",
-          "status": "active",
-          "rum2026": 82500,
-          "notes": "H1 2026"
-        },
-        {
-          "client": "LaunchDarkly",
-          "coachee": "Marcus Holm (President)",
-          "type": "Exec Coaching",
-          "startDate": "2026-03-01",
-          "endDate": "2026-08-31",
-          "status": "active",
-          "rum2026": 66000,
-          "notes": "Renewal Mar–Aug 2026"
-        },
-        {
-          "client": "Kraken",
-          "coachee": "Stephanie Lemmerman (former CFO)",
-          "type": "Exec Coaching",
-          "startDate": "2026-02-01",
-          "endDate": "2026-08-31",
-          "status": "active",
-          "rum2026": 50000,
-          "notes": ""
-        },
-        {
-          "client": "OneTrust",
-          "coachee": "Kim Rivera",
-          "type": "Exec Coaching",
-          "startDate": "2025-11-01",
-          "endDate": "2026-03-31",
-          "status": "active",
-          "rum2026": 50050,
-          "notes": "Weekly cadence"
-        },
-        {
-          "client": "UKG",
-          "coachee": "CIO",
-          "type": "Exec Coaching",
-          "startDate": "2026-01-01",
-          "endDate": "2026-09-30",
-          "status": "active",
-          "rum2026": 82500,
-          "notes": ""
-        },
-        {
-          "client": "Darlington",
-          "coachee": "Partner Group",
-          "type": "Partner Advisory",
-          "startDate": "2026-01-01",
-          "endDate": "2026-12-31",
-          "status": "active",
-          "rum2026": 55000,
-          "notes": "Ongoing advisory support"
-        }
+      "coachees": [
+        { "company": "Pareto Health",    "name": "Maeve O'Meara",         "title": "CEO",                             "status": "Active",   "triumOM": "Meghan",   "schedulingContact": "Erica Lesneski" },
+        { "company": "Method",           "name": "Mit Shaw",               "title": "Co-founder & COO",                "status": "Ending",   "triumOM": "Meghan",   "schedulingContact": "Mandi Lornson" },
+        { "company": "LaunchDarkly",     "name": "Marcus Holm",            "title": "President",                       "status": "Active",   "triumOM": "Meghan",   "schedulingContact": "Marzi Charles" },
+        { "company": "Eightfold",        "name": "Rimple Patel",           "title": "Chief Customer Officer",          "status": "Ending",   "triumOM": "Meghan",   "schedulingContact": "Natalie De Villiers" },
+        { "company": "Figma",            "name": "Shaunt Voskanian",       "title": "Chief Revenue Officer",           "status": "Active",   "triumOM": "Meghan",   "schedulingContact": "Gena Chen" },
+        { "company": "OneTrust",         "name": "Kim Rivera",             "title": "Chief Legal & Business Officer",  "status": "Ending",   "triumOM": "Meghan",   "schedulingContact": "Rocio Hoerz" },
+        { "company": "Saltwater",        "name": "Ryan Graves",            "title": "Founder & CEO",                   "status": "Ending",   "triumOM": "Meghan",   "schedulingContact": "Carlye Callihan" },
+        { "company": "Rula",             "name": "Douglas Newton",         "title": "Chief Medical Officer",           "status": "Active",   "triumOM": "Meghan",   "schedulingContact": "Lisa Romero" },
+        { "company": "Coreweave",        "name": "Nitin Agrawal",          "title": "CFO",                             "status": "Active",   "triumOM": "Meghan",   "schedulingContact": "Raquel Cuevas Ceja" },
+        { "company": "Kraken",           "name": "Stephanie Lemmerman",    "title": "",                                "status": "Active",   "triumOM": "Meghan",   "schedulingContact": "Direct" }
       ]
     },
     {
       "coach": "Michelle",
-      "engagements": [
-        {
-          "client": "Figma",
-          "coachee": "VP Cohort (20 spots)",
-          "type": "Group Coaching",
-          "startDate": "2025-12-01",
-          "endDate": "2026-12-31",
-          "status": "active",
-          "rum2026": 315000,
-          "notes": "Renewal cohort; 20 VPs"
-        },
-        {
-          "client": "Patreon",
-          "coachee": "C-Suite Team",
-          "type": "Team Coaching",
-          "startDate": "2026-01-01",
-          "endDate": "2026-12-31",
-          "status": "active",
-          "rum2026": 247500,
-          "notes": "Symmetrical coaching + team cohesion"
-        },
-        {
-          "client": "OpenAI",
-          "coachee": "Lindsey Tran",
-          "type": "Exec Coaching",
-          "startDate": "2025-11-01",
-          "endDate": "2026-04-30",
-          "status": "active",
-          "rum2026": 31168,
-          "notes": ""
-        },
-        {
-          "client": "Deputy",
-          "coachee": "Emma Seymour (CFO)",
-          "type": "Exec Coaching",
-          "startDate": "2026-01-01",
-          "endDate": "2026-09-30",
-          "status": "active",
-          "rum2026": 24500,
-          "notes": ""
-        },
-        {
-          "client": "Deputy",
-          "coachee": "Silvija (Individual)",
-          "type": "Exec Coaching",
-          "startDate": "2025-10-01",
-          "endDate": "2026-06-30",
-          "status": "active",
-          "rum2026": 11000,
-          "notes": "Renewal"
-        },
-        {
-          "client": "Stellar Health",
-          "coachee": "Alicia Voorhees",
-          "type": "Exec Coaching",
-          "startDate": "2026-02-01",
-          "endDate": "2026-07-31",
-          "status": "active",
-          "rum2026": 6738,
-          "notes": "Renewal"
-        }
+      "coachees": [
+        { "company": "Figma",            "name": "Sheila Vashee",          "title": "CMO",                             "status": "Active",   "triumOM": "Julianne", "schedulingContact": "Marielle Lorenz" },
+        { "company": "Figma",            "name": "Jason Silverstein",      "title": "VP, Commercial Sales",            "status": "Active",   "triumOM": "Julianne", "schedulingContact": "Emily Whitney" },
+        { "company": "Patreon",          "name": "Paige Fitzgerald",       "title": "COO",                             "status": "Active",   "triumOM": "Julianne", "schedulingContact": "Mack Freeman" },
+        { "company": "Patreon",          "name": "Drew Rowny",             "title": "VP, Product",                     "status": "Active",   "triumOM": "Julianne", "schedulingContact": "Alyssa Panebianco" },
+        { "company": "Patreon",          "name": "Kathleen Pacini",        "title": "CPO",                             "status": "Active",   "triumOM": "Julianne", "schedulingContact": "Haley Taylor" },
+        { "company": "Mya Labs",         "name": "Brian Hennessey-Hsieh",  "title": "Co-founder",                      "status": "Ending",   "triumOM": "Cara",     "schedulingContact": "Direct scheduling" },
+        { "company": "Mya Labs",         "name": "Rolando Esparza",        "title": "Co-founder",                      "status": "Ending",   "triumOM": "Cara",     "schedulingContact": "Direct scheduling" },
+        { "company": "Tatcha",           "name": "Kyle Khasigian",         "title": "CFO",                             "status": "Ending",   "triumOM": "Julianne", "schedulingContact": "Direct scheduling" },
+        { "company": "Tatcha",           "name": "Nicole Frusci",          "title": "Global CMO",                      "status": "Inactive", "triumOM": "Julianne", "schedulingContact": "Theresa Dang" },
+        { "company": "OpenAI",           "name": "Lindsey Tran",           "title": "Head of Global Employee Relations","status": "Active",   "triumOM": "Meghan",   "schedulingContact": "Eileen O'Donoghue" },
+        { "company": "Rula",             "name": "Linda Lee",              "title": "Chief People Officer",            "status": "Active",   "triumOM": "Julianne", "schedulingContact": "Lisa Romero" },
+        { "company": "Hamilton Families","name": "Kyriell Noon",           "title": "CEO",                             "status": "Active",   "triumOM": "Julianne", "schedulingContact": "Justine Najava" }
       ]
     },
     {
       "coach": "Rebecca",
-      "engagements": [
-        {
-          "client": "Temporal",
-          "coachee": "CEO + LT",
-          "type": "CEO Coaching + Team",
-          "startDate": "2026-05-01",
-          "endDate": "2027-01-31",
-          "status": "active",
-          "rum2026": 0,
-          "notes": "CEO coaching, LT & GTM support — 0% pod RUM"
-        },
-        {
-          "client": "Scopely – Slate Luna",
-          "coachee": "Leadership Team",
-          "type": "Consulting & Coaching",
-          "startDate": "2026-01-01",
-          "endDate": "2026-09-30",
-          "status": "active",
-          "rum2026": 47763,
-          "notes": ""
-        },
-        {
-          "client": "Scopely – Slate Electrum",
-          "coachee": "Leadership Team",
-          "type": "Consulting & Coaching",
-          "startDate": "2026-01-01",
-          "endDate": "2026-09-30",
-          "status": "active",
-          "rum2026": 68983,
-          "notes": ""
-        },
-        {
-          "client": "Centaur Labs",
-          "coachee": "Laura Kier (VP Growth & Ops)",
-          "type": "Exec Coaching",
-          "startDate": "2026-04-01",
-          "endDate": "2026-10-31",
-          "status": "active",
-          "rum2026": 9000,
-          "notes": ""
-        }
-      ]
+      "coachees": []
     },
     {
       "coach": "Trice",
-      "engagements": [
-        {
-          "client": "LaunchDarkly",
-          "coachee": "CPO & CLO",
-          "type": "Exec Coaching + Offsite",
-          "startDate": "2026-03-01",
-          "endDate": "2026-06-30",
-          "status": "active",
-          "rum2026": 121000,
-          "notes": "Coaching + strategic narrative support"
-        },
-        {
-          "client": "Numeric",
-          "coachee": "CEO + Team",
-          "type": "CEO Coaching + Diagnostic",
-          "startDate": "2026-01-01",
-          "endDate": "2026-06-30",
-          "status": "active",
-          "rum2026": 0,
-          "notes": "0% pod RUM — Trice-led"
-        },
-        {
-          "client": "CDC – NCIRD",
-          "coachee": "Team",
-          "type": "Team Effectiveness",
-          "startDate": "2026-03-01",
-          "endDate": "2026-07-31",
-          "status": "active",
-          "rum2026": 0,
-          "notes": "Team coaching + effectiveness work"
-        }
-      ]
+      "coachees": []
+    },
+    {
+      "coach": "Austin",
+      "coachees": []
     }
   ]
 }
