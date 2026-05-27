@@ -821,7 +821,7 @@ const LOADING_HTML = `<div class="loading-state"><span class="loading-dot"></spa
 async function loadPipeline() {
   $('pipeline-body').innerHTML = `<div class="loading-state"><span class="loading-dot"></span><span class="loading-dot"></span><span class="loading-dot"></span><div style="margin-top:1rem;">Loading pipeline data…</div></div>`;
   try {
-    const res = await fetch('data/pipeline-2026.json');
+    const res = await fetch('/.netlify/functions/sheet-data?tab=pipeline');
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
     _allDeals = data.deals || [];
@@ -901,7 +901,7 @@ function setPipelineFilter(type, value, btn) {
 async function loadLB() {
   window._lbLoaded = true;
   try {
-    const res = await fetch('data/load-balancing.json');
+    const res = await fetch('/.netlify/functions/sheet-data?tab=load-balancing');
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
     window._staticDate = data.lastUpdated;
@@ -1013,7 +1013,7 @@ async function loadCoaching() {
   window._coachLoaded = true;
   $('coaching-body').innerHTML = LOADING_HTML;
   try {
-    const res = await fetch('data/pod-coaching.json');
+    const res = await fetch('/.netlify/functions/sheet-data?tab=pod-coaching');
     const data = await res.json();
     renderCoaching(data);
   } catch (err) {
