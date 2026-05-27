@@ -4,46 +4,73 @@
     {
       "coach": "Doug",
       "coachees": [
-        { "company": "Pareto Health",    "name": "Maeve O'Meara",         "title": "CEO",                             "status": "Active",   "triumOM": "Meghan",   "schedulingContact": "Erica Lesneski" },
-        { "company": "Method",           "name": "Mit Shaw",               "title": "Co-founder & COO",                "status": "Ending",   "triumOM": "Meghan",   "schedulingContact": "Mandi Lornson" },
-        { "company": "LaunchDarkly",     "name": "Marcus Holm",            "title": "President",                       "status": "Active",   "triumOM": "Meghan",   "schedulingContact": "Marzi Charles" },
-        { "company": "Eightfold",        "name": "Rimple Patel",           "title": "Chief Customer Officer",          "status": "Ending",   "triumOM": "Meghan",   "schedulingContact": "Natalie De Villiers" },
-        { "company": "Figma",            "name": "Shaunt Voskanian",       "title": "Chief Revenue Officer",           "status": "Active",   "triumOM": "Meghan",   "schedulingContact": "Gena Chen" },
-        { "company": "OneTrust",         "name": "Kim Rivera",             "title": "Chief Legal & Business Officer",  "status": "Ending",   "triumOM": "Meghan",   "schedulingContact": "Rocio Hoerz" },
-        { "company": "Saltwater",        "name": "Ryan Graves",            "title": "Founder & CEO",                   "status": "Ending",   "triumOM": "Meghan",   "schedulingContact": "Carlye Callihan" },
-        { "company": "Rula",             "name": "Douglas Newton",         "title": "Chief Medical Officer",           "status": "Active",   "triumOM": "Meghan",   "schedulingContact": "Lisa Romero" },
-        { "company": "Coreweave",        "name": "Nitin Agrawal",          "title": "CFO",                             "status": "Active",   "triumOM": "Meghan",   "schedulingContact": "Raquel Cuevas Ceja" },
-        { "company": "Kraken",           "name": "Stephanie Lemmerman",    "title": "",                                "status": "Active",   "triumOM": "Meghan",   "schedulingContact": "Direct" }
+        { "company": "Pareto Health",         "name": "Maeve O'Meara",          "title": "CEO",                                   "status": "Active",   "triumOM": "Meghan",   "schedulingContact": "Erica Lesneski" },
+        { "company": "Method",                "name": "Mit Shaw",                "title": "Co-founder & COO",                      "status": "Ending",   "triumOM": "Meghan",   "schedulingContact": "Mandi Lornson" },
+        { "company": "LaunchDarkly",          "name": "Marcus Holm",             "title": "President",                             "status": "Active",   "triumOM": "Meghan",   "schedulingContact": "Marzi Charles" },
+        { "company": "Eightfold",             "name": "Rimple Patel",            "title": "Chief Customer Officer",                "status": "Ending",   "triumOM": "Meghan",   "schedulingContact": "Natalie De Villiers" },
+        { "company": "Figma",                 "name": "Shaunt Voskanian",        "title": "Chief Revenue Officer",                 "status": "Active",   "triumOM": "Meghan",   "schedulingContact": "Gena Chen" },
+        { "company": "OneTrust",              "name": "Kim Rivera",              "title": "Chief Legal & Business Officer",        "status": "Ending",   "triumOM": "Meghan",   "schedulingContact": "Rocio Hoerz" },
+        { "company": "Saltwater",             "name": "Ryan Graves",             "title": "Founder & CEO",                         "status": "Ending",   "triumOM": "Meghan",   "schedulingContact": "Carlye Callihan" },
+        { "company": "Rula",                  "name": "Douglas Newton",          "title": "Chief Medical Officer",                 "status": "Active",   "triumOM": "Meghan",   "schedulingContact": "Lisa Romero" },
+        { "company": "Coreweave",             "name": "Nitin Agrawal",           "title": "CFO",                                   "status": "Active",   "triumOM": "Meghan",   "schedulingContact": "Raquel Cuevas Ceja" },
+        { "company": "Kraken",                "name": "Stephanie Lemmerman",     "title": "",                                      "status": "Active",   "triumOM": "Meghan",   "schedulingContact": "Direct" }
       ]
     },
     {
       "coach": "Michelle",
       "coachees": [
-        { "company": "Figma",            "name": "Sheila Vashee",          "title": "CMO",                             "status": "Active",   "triumOM": "Julianne", "schedulingContact": "Marielle Lorenz" },
-        { "company": "Figma",            "name": "Jason Silverstein",      "title": "VP, Commercial Sales",            "status": "Active",   "triumOM": "Julianne", "schedulingContact": "Emily Whitney" },
-        { "company": "Patreon",          "name": "Paige Fitzgerald",       "title": "COO",                             "status": "Active",   "triumOM": "Julianne", "schedulingContact": "Mack Freeman" },
-        { "company": "Patreon",          "name": "Drew Rowny",             "title": "VP, Product",                     "status": "Active",   "triumOM": "Julianne", "schedulingContact": "Alyssa Panebianco" },
-        { "company": "Patreon",          "name": "Kathleen Pacini",        "title": "CPO",                             "status": "Active",   "triumOM": "Julianne", "schedulingContact": "Haley Taylor" },
-        { "company": "Mya Labs",         "name": "Brian Hennessey-Hsieh",  "title": "Co-founder",                      "status": "Ending",   "triumOM": "Cara",     "schedulingContact": "Direct scheduling" },
-        { "company": "Mya Labs",         "name": "Rolando Esparza",        "title": "Co-founder",                      "status": "Ending",   "triumOM": "Cara",     "schedulingContact": "Direct scheduling" },
-        { "company": "Tatcha",           "name": "Kyle Khasigian",         "title": "CFO",                             "status": "Ending",   "triumOM": "Julianne", "schedulingContact": "Direct scheduling" },
-        { "company": "Tatcha",           "name": "Nicole Frusci",          "title": "Global CMO",                      "status": "Inactive", "triumOM": "Julianne", "schedulingContact": "Theresa Dang" },
-        { "company": "OpenAI",           "name": "Lindsey Tran",           "title": "Head of Global Employee Relations","status": "Active",   "triumOM": "Meghan",   "schedulingContact": "Eileen O'Donoghue" },
-        { "company": "Rula",             "name": "Linda Lee",              "title": "Chief People Officer",            "status": "Active",   "triumOM": "Julianne", "schedulingContact": "Lisa Romero" },
-        { "company": "Hamilton Families","name": "Kyriell Noon",           "title": "CEO",                             "status": "Active",   "triumOM": "Julianne", "schedulingContact": "Justine Najava" }
+        { "company": "Figma",                 "name": "Sheila Vashee",           "title": "CMO",                                   "status": "Active",   "triumOM": "Julianne", "schedulingContact": "Marielle Lorenz" },
+        { "company": "Figma",                 "name": "Jason Silverstein",       "title": "VP, Commercial Sales",                  "status": "Active",   "triumOM": "Julianne", "schedulingContact": "Emily Whitney" },
+        { "company": "Patreon",               "name": "Paige Fitzgerald",        "title": "COO",                                   "status": "Active",   "triumOM": "Julianne", "schedulingContact": "Mack Freeman" },
+        { "company": "Patreon",               "name": "Drew Rowny",              "title": "VP, Product",                           "status": "Active",   "triumOM": "Julianne", "schedulingContact": "Alyssa Panebianco" },
+        { "company": "Patreon",               "name": "Kathleen Pacini",         "title": "CPO",                                   "status": "Active",   "triumOM": "Julianne", "schedulingContact": "Haley Taylor" },
+        { "company": "Mya Labs",              "name": "Brian Hennessey-Hsieh",   "title": "Co-founder",                            "status": "Ending",   "triumOM": "Cara",     "schedulingContact": "Direct" },
+        { "company": "Mya Labs",              "name": "Rolando Esparza",         "title": "Co-founder",                            "status": "Ending",   "triumOM": "Cara",     "schedulingContact": "Direct" },
+        { "company": "Tatcha",                "name": "Kyle Khasigian",          "title": "CFO",                                   "status": "Ending",   "triumOM": "Julianne", "schedulingContact": "Direct" },
+        { "company": "Tatcha",                "name": "Nicole Frusci",           "title": "Global CMO",                            "status": "Inactive", "triumOM": "Julianne", "schedulingContact": "Theresa Dang" },
+        { "company": "OpenAI",                "name": "Lindsey Tran",            "title": "Head of Global Employee Relations",     "status": "Active",   "triumOM": "Meghan",   "schedulingContact": "Eileen O'Donoghue" },
+        { "company": "Rula",                  "name": "Linda Lee",               "title": "Chief People Officer",                  "status": "Active",   "triumOM": "Julianne", "schedulingContact": "Lisa Romero" },
+        { "company": "Hamilton Families",     "name": "Kyriell Noon",            "title": "CEO",                                   "status": "Active",   "triumOM": "Julianne", "schedulingContact": "Justine Najava" }
+      ]
+    },
+    {
+      "coach": "Austin",
+      "coachees": [
+        { "company": "Figma",                 "name": "Kathryn Ashcraft",        "title": "VP, Global Real Estate & Workplace",    "status": "Active",   "triumOM": "Meghan",   "schedulingContact": "Doran Rivera" },
+        { "company": "Figma",                 "name": "Christine Gibson",        "title": "Director, HR Operations",               "status": "Active",   "triumOM": "Julianne", "schedulingContact": "Direct" },
+        { "company": "McDonald's",            "name": "Rubeen Issa",             "title": "Dir. of Security & Infrastructure",     "status": "Active",   "triumOM": "Sera",     "schedulingContact": "LaDorra Carroll" },
+        { "company": "McDonald's",            "name": "Chad Reichart",           "title": "Head of Identity and Access Mgmt",      "status": "Active",   "triumOM": "Sera",     "schedulingContact": "LaDorra Carroll" },
+        { "company": "McDonald's",            "name": "Adam Slowik",             "title": "Cybersecurity Director",                "status": "Active",   "triumOM": "Sera",     "schedulingContact": "Direct" },
+        { "company": "REDF",                  "name": "Maura Welch",             "title": "Director, Capacity Building",           "status": "Active",   "triumOM": "Julianne", "schedulingContact": "Direct" }
       ]
     },
     {
       "coach": "Rebecca",
-      "coachees": []
+      "coachees": [
+        { "company": "Yale",                  "name": "Deborah Chung",           "title": "",                                      "status": "Active",   "triumOM": "Julianne", "schedulingContact": "Direct" },
+        { "company": "Centaur Labs",          "name": "Laura Kier",              "title": "VP, Growth & Ops",                      "status": "Active",   "triumOM": "Julianne", "schedulingContact": "Direct" },
+        { "company": "Figma",                 "name": "Reema Batta",             "title": "VP Growth Marketing",                   "status": "Active",   "triumOM": "Julianne", "schedulingContact": "Marielle Lorenz" },
+        { "company": "Scopely Slate",         "name": "David Eckelberry",        "title": "",                                      "status": "Active",   "triumOM": "Sera",     "schedulingContact": "Direct" },
+        { "company": "Scopely Slate",         "name": "Ben Brudenell",           "title": "",                                      "status": "Active",   "triumOM": "Sera",     "schedulingContact": "Direct" },
+        { "company": "Scopely Slate",         "name": "Craig Zinkievich",        "title": "",                                      "status": "Pending",  "triumOM": "Sera",     "schedulingContact": "Direct" },
+        { "company": "Scopely Slate",         "name": "Matt Highison",           "title": "",                                      "status": "Active",   "triumOM": "Sera",     "schedulingContact": "Direct" },
+        { "company": "Community of Hope",     "name": "Kelly McShane",           "title": "President & CEO",                       "status": "Active",   "triumOM": "Julianne", "schedulingContact": "Direct" },
+        { "company": "Temporal",              "name": "Kate Caufield",           "title": "",                                      "status": "Active",   "triumOM": "Alex",     "schedulingContact": "Direct" },
+        { "company": "Pareto Health",         "name": "Tamar Rudnick",           "title": "SVP, Growth",                           "status": "Pending",  "triumOM": "Julianne", "schedulingContact": "Sheri Bertero" },
+        { "company": "Pareto Health",         "name": "Gary Basra",              "title": "CTO",                                   "status": "Pending",  "triumOM": "Julianne", "schedulingContact": "Chantel Pitt" }
+      ]
     },
     {
       "coach": "Trice",
-      "coachees": []
-    },
-    {
-      "coach": "Austin",
-      "coachees": []
+      "coachees": [
+        { "company": "Rula",                  "name": "Tracey Scraba",           "title": "General Counsel",                       "status": "Active",   "triumOM": "Meghan",   "schedulingContact": "Lisa Romero" },
+        { "company": "Rula",                  "name": "Alanna Nielsen",          "title": "COO",                                   "status": "Active",   "triumOM": "Meghan",   "schedulingContact": "Rebecca Mueller" },
+        { "company": "Global Village Project","name": "Allison Ezell",           "title": "CEO & Head of School",                  "status": "Active",   "triumOM": "Meghan",   "schedulingContact": "Direct" },
+        { "company": "CDC",                   "name": "Gregory Thorne",          "title": "",                                      "status": "Active",   "triumOM": "Meghan",   "schedulingContact": "Direct" },
+        { "company": "CDC",                   "name": "Kimberley Fox",           "title": "",                                      "status": "Active",   "triumOM": "Meghan",   "schedulingContact": "Direct" },
+        { "company": "LaunchDarkly",          "name": "Marilyn Miller",          "title": "CPO",                                   "status": "Active",   "triumOM": "Meghan",   "schedulingContact": "Direct" },
+        { "company": "LaunchDarkly",          "name": "Sai Sriskandarajah",      "title": "Chief Legal Officer",                   "status": "Active",   "triumOM": "Meghan",   "schedulingContact": "Cristina Blanco" }
+      ]
     }
   ]
 }
