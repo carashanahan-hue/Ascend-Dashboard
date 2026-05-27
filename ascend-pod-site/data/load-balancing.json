@@ -1,266 +1,249 @@
 {
   "lastUpdated": "2026-05-27",
-  "summary": {
-    "totalActiveProjects": 22,
-    "endingQ2": 4,
-    "endingQ3": 5,
-    "endingQ4": 10,
-    "endingQ1_2027": 3
-  },
-  "partners": [
+  "people": [
     {
-      "id": "doug",
       "name": "Doug",
-      "color": "#53616e",
-      "projects": [
-        {
-          "client": "Rula Health",
-          "description": "Leadership Team Symmetrical Coaching H1 2026",
-          "rum2026": 666664,
-          "endDate": "2026-06-30",
-          "quarter": "Q2",
-          "status": "active_priority"
-        },
-        {
-          "client": "Amentum Mission Solutions",
-          "description": "Business Line Strategy Support Apr–Jul 2026",
-          "rum2026": 300000,
-          "endDate": "2026-07-31",
-          "quarter": "Q3",
-          "status": "active_priority"
-        },
-        {
-          "client": "Amentum 2026 LT Transformation",
-          "description": "MSA + Mission Solutions Functional Support & Coaching Jan–Dec 2026",
-          "rum2026": 616000,
-          "endDate": "2026-12-31",
-          "quarter": "Q4",
-          "status": "active_priority"
-        },
-        {
-          "client": "Amentum Mission Solutions",
-          "description": "Functional Support Dec 2025–Dec 2026",
-          "rum2026": 434500,
-          "endDate": "2026-12-31",
-          "quarter": "Q4",
-          "status": "active_priority"
-        },
-        {
-          "client": "HealthEquity",
-          "description": "2026 SLT Support Feb 2026–Jan 2027",
-          "rum2026": 206250,
-          "rum2027": 41250,
-          "endDate": "2027-01-31",
-          "quarter": "Q1 2027",
-          "status": "active_priority"
-        },
-        {
-          "client": "Allvue",
-          "description": "Quarterly ELT Support Jan–Dec 2026",
-          "rum2026": 385000,
-          "endDate": "2026-12-31",
-          "quarter": "Q4",
-          "status": "active_priority"
-        },
-        {
-          "client": "Pareto Health",
-          "description": "2026 Continuation",
-          "rum2026": 272250,
-          "endDate": "2026-12-31",
-          "quarter": "Q4",
-          "status": "active_priority"
-        },
-        {
-          "client": "UKG",
-          "description": "Executive Coaching for CIO",
-          "rum2026": 82500,
-          "endDate": "2026-09-30",
-          "quarter": "Q3",
-          "status": "active"
-        },
-        {
-          "client": "Darlington",
-          "description": "Partner Advisory Support 2026",
-          "rum2026": 55000,
-          "endDate": "2026-12-31",
-          "quarter": "Q4",
-          "status": "active"
-        },
-        {
-          "client": "CoreWeave",
-          "description": "CFO Executive Coaching H1 2026",
-          "rum2026": 82500,
-          "endDate": "2026-06-30",
-          "quarter": "Q2",
-          "status": "active"
-        },
-        {
-          "client": "LaunchDarkly",
-          "description": "President (Marcus Holm) Executive Coaching Renewal Mar–Aug 2026",
-          "rum2026": 66000,
-          "endDate": "2026-08-31",
-          "quarter": "Q3",
-          "status": "active"
-        },
-        {
-          "client": "Kraken",
-          "description": "Executive Coaching for Stephanie Lemmerman Feb–Aug 2026",
-          "rum2026": 50000,
-          "endDate": "2026-08-31",
-          "quarter": "Q3",
-          "status": "active"
-        },
-        {
-          "client": "OneTrust",
-          "description": "Executive Coaching for Kim Rivera (Weekly) Nov 2025–Jan 2026",
-          "rum2026": 50050,
-          "endDate": "2026-03-31",
-          "quarter": "Q1",
-          "status": "active"
-        }
-      ]
+      "seatA": 7,
+      "seatB": 2,
+      "principal": 0,
+      "cx": 0,
+      "om": 0,
+      "strategyEngagements": 9,
+      "coachees": 8
     },
     {
-      "id": "michelle",
       "name": "Michelle",
-      "color": "#ffa500",
-      "projects": [
-        {
-          "client": "Gap Inc. – IndigoX",
-          "description": "One-Day Team Session May–Jun 2026",
-          "rum2026": 41250,
-          "endDate": "2026-06-30",
-          "quarter": "Q2",
-          "status": "active_priority"
-        },
-        {
-          "client": "Figma",
-          "description": "VP Coaching Cohort 2025–26 Renewal (20 spots)",
-          "rum2026": 315000,
-          "endDate": "2026-12-31",
-          "quarter": "Q4",
-          "status": "active_priority"
-        },
-        {
-          "client": "Patreon",
-          "description": "Symmetrical Coaching & Team Cohesion",
-          "rum2026": 247500,
-          "endDate": "2026-12-31",
-          "quarter": "Q4",
-          "status": "active_priority"
-        },
-        {
-          "client": "OpenAI",
-          "description": "Executive Coaching for Lindsey Tran Nov 2025–Apr 2026",
-          "rum2026": 31168,
-          "endDate": "2026-04-30",
-          "quarter": "Q2",
-          "status": "active"
-        },
-        {
-          "client": "Deputy",
-          "description": "Exec Coaching for CFO Emma Seymour",
-          "rum2026": 24500,
-          "endDate": "2026-09-30",
-          "quarter": "Q3",
-          "status": "active"
-        },
-        {
-          "client": "Deputy",
-          "description": "Individual Coaching Renewal for Silvija 2025–2026",
-          "rum2026": 11000,
-          "endDate": "2026-06-30",
-          "quarter": "Q2",
-          "status": "active"
-        },
-        {
-          "client": "Stellar Health",
-          "description": "Coaching Renewal – Alicia Voorhees",
-          "rum2026": 6738,
-          "endDate": "2026-07-31",
-          "quarter": "Q3",
-          "status": "active"
-        }
-      ]
+      "seatA": 3,
+      "seatB": 3,
+      "principal": 0,
+      "cx": 0,
+      "om": 0,
+      "strategyEngagements": 5,
+      "coachees": 8
     },
     {
-      "id": "rebecca",
       "name": "Rebecca",
-      "color": "#f5642e",
-      "projects": [
-        {
-          "client": "Temporal",
-          "description": "Continued CEO Coaching, LT & GTM Support May 2026–Jan 2027",
-          "rum2026": 0,
-          "endDate": "2027-01-31",
-          "quarter": "Q1 2027",
-          "status": "active_priority"
-        },
-        {
-          "client": "Scopely – Slate Luna",
-          "description": "Consulting & Coaching",
-          "rum2026": 47763,
-          "endDate": "2026-09-30",
-          "quarter": "Q3",
-          "status": "active"
-        },
-        {
-          "client": "Scopely – Slate Electrum",
-          "description": "Consulting & Coaching",
-          "rum2026": 68983,
-          "endDate": "2026-09-30",
-          "quarter": "Q3",
-          "status": "active"
-        },
-        {
-          "client": "Centaur Labs",
-          "description": "VP Growth & Ops Coaching Apr–Oct 2026",
-          "rum2026": 9000,
-          "endDate": "2026-10-31",
-          "quarter": "Q4",
-          "status": "active"
-        }
-      ]
+      "seatA": 1,
+      "seatB": 3,
+      "principal": 0,
+      "cx": 0,
+      "om": 0,
+      "strategyEngagements": 4,
+      "coachees": 10
     },
     {
-      "id": "trice",
       "name": "Trice",
-      "color": "#a6c1b5",
-      "projects": [
-        {
-          "client": "Numeric",
-          "description": "CEO Coaching, Diagnostic & Offsite Jan–Jun 2026",
-          "rum2026": 0,
-          "endDate": "2026-06-30",
-          "quarter": "Q2",
-          "status": "active_priority"
-        },
-        {
-          "client": "CDC – NCIRD",
-          "description": "Team Effectiveness + Team Coaching Mar–Jul 2026",
-          "rum2026": 0,
-          "endDate": "2026-07-31",
-          "quarter": "Q3",
-          "status": "active_priority"
-        },
-        {
-          "client": "LaunchDarkly",
-          "description": "CPO & CLO Coaching + Offsite & Strategic Narrative Mar–Jun 2026",
-          "rum2026": 121000,
-          "endDate": "2026-06-30",
-          "quarter": "Q2",
-          "status": "active_priority"
-        },
-        {
-          "client": "MTN Fintech (Momo)",
-          "description": "CEO Leadership System Support Mar 2026–Mar 2027",
-          "rum2026": 187500,
-          "rum2027": 56250,
-          "endDate": "2027-03-31",
-          "quarter": "Q1 2027",
-          "status": "proposal"
-        }
-      ]
+      "seatA": 0,
+      "seatB": 4,
+      "principal": 0,
+      "cx": 0,
+      "om": 0,
+      "strategyEngagements": 2,
+      "coachees": 5
+    },
+    {
+      "name": "Austin",
+      "seatA": 0,
+      "seatB": 1,
+      "principal": 0,
+      "cx": 3,
+      "om": 0,
+      "strategyEngagements": 4,
+      "coachees": 5
+    },
+    {
+      "name": "Meghan",
+      "seatA": 0,
+      "seatB": 0,
+      "principal": 0,
+      "cx": 1,
+      "om": 7,
+      "strategyEngagements": 9,
+      "coachees": 12
+    }
+  ],
+  "clients": [
+    {
+      "name": "Allvue",
+      "status": "ACTIVE",
+      "seatA": "Doug",
+      "seatB": "Trice",
+      "principal": "",
+      "cx": "Austin",
+      "om": "Meghan",
+      "coachingOps": "",
+      "coachOther": "",
+      "notes": "",
+      "outsidePod": false
+    },
+    {
+      "name": "Amentum ELT",
+      "status": "ACTIVE",
+      "seatA": "Doug",
+      "seatB": "Tabea",
+      "principal": "",
+      "cx": "",
+      "om": "Meghan",
+      "coachingOps": "Jess",
+      "coachOther": "",
+      "notes": "Partner share with Meredith",
+      "outsidePod": false
+    },
+    {
+      "name": "Amentum Mission Solutions",
+      "status": "ACTIVE",
+      "seatA": "Doug",
+      "seatB": "Tabea",
+      "principal": "",
+      "cx": "",
+      "om": "Meghan",
+      "coachingOps": "Jess",
+      "coachOther": "",
+      "notes": "",
+      "outsidePod": false
+    },
+    {
+      "name": "Figma",
+      "status": "ACTIVE",
+      "seatA": "Michelle",
+      "seatB": "Doug",
+      "principal": "",
+      "cx": "Meghan",
+      "om": "Meghan",
+      "coachingOps": "Jess / Julianne",
+      "coachOther": "",
+      "notes": "",
+      "outsidePod": false
+    },
+    {
+      "name": "HealthEquity",
+      "status": "ACTIVE",
+      "seatA": "Doug",
+      "seatB": "Rebecca",
+      "principal": "",
+      "cx": "Austin",
+      "om": "Julianne",
+      "coachingOps": "",
+      "coachOther": "",
+      "notes": "Partner share with Darren",
+      "outsidePod": false
+    },
+    {
+      "name": "Pareto",
+      "status": "ACTIVE",
+      "seatA": "Doug",
+      "seatB": "Rebecca",
+      "principal": "",
+      "cx": "",
+      "om": "Meghan",
+      "coachingOps": "Jess",
+      "coachOther": "",
+      "notes": "",
+      "outsidePod": false
+    },
+    {
+      "name": "Patreon",
+      "status": "ACTIVE",
+      "seatA": "Michelle",
+      "seatB": "",
+      "principal": "",
+      "cx": "",
+      "om": "Julianne",
+      "coachingOps": "Cara",
+      "coachOther": "",
+      "notes": "Partner share with Stephanie",
+      "outsidePod": false
+    },
+    {
+      "name": "Rula",
+      "status": "ACTIVE",
+      "seatA": "Doug",
+      "seatB": "Michelle",
+      "principal": "",
+      "cx": "",
+      "om": "Meghan",
+      "coachingOps": "Jess",
+      "coachOther": "",
+      "notes": "AJB coaching CEO",
+      "outsidePod": false
+    },
+    {
+      "name": "Scopely Slate",
+      "status": "ACTIVE",
+      "seatA": "Rebecca",
+      "seatB": "Austin",
+      "principal": "",
+      "cx": "",
+      "om": "Sera",
+      "coachingOps": "",
+      "coachOther": "",
+      "notes": "Partner share with Monica",
+      "outsidePod": true
+    },
+    {
+      "name": "CDC",
+      "status": "ACTIVE",
+      "seatA": "Tabea / William",
+      "seatB": "Trice",
+      "principal": "",
+      "cx": "",
+      "om": "Alex",
+      "coachingOps": "",
+      "coachOther": "",
+      "notes": "",
+      "outsidePod": true
+    },
+    {
+      "name": "Nuro",
+      "status": "ACTIVE",
+      "seatA": "Darren",
+      "seatB": "",
+      "principal": "",
+      "cx": "Austin",
+      "om": "Cara",
+      "coachingOps": "",
+      "coachOther": "",
+      "notes": "",
+      "outsidePod": true
+    },
+    {
+      "name": "Numeric",
+      "status": "ACTIVE",
+      "seatA": "Will H",
+      "seatB": "Trice",
+      "principal": "",
+      "cx": "",
+      "om": "Alex",
+      "coachingOps": "",
+      "coachOther": "",
+      "notes": "",
+      "outsidePod": true
+    },
+    {
+      "name": "Temporal",
+      "status": "ACTIVE",
+      "seatA": "Will H",
+      "seatB": "Rebecca",
+      "principal": "",
+      "cx": "",
+      "om": "Alex",
+      "coachingOps": "",
+      "coachOther": "",
+      "notes": "",
+      "outsidePod": true
+    },
+    {
+      "name": "Lockheed Martin",
+      "status": "ACTIVE",
+      "seatA": "William",
+      "seatB": "Tabea",
+      "principal": "",
+      "cx": "Austin",
+      "om": "",
+      "coachingOps": "",
+      "coachOther": "",
+      "notes": "",
+      "outsidePod": true
     }
   ]
 }
