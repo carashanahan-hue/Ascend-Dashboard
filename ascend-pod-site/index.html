@@ -747,11 +747,14 @@ async function loadPipeline() {
     // Re-map podMember on the frontend using first-name match against ownerName,
     // since HUBSPOT_OWNER_* env vars may not be configured in Netlify.
     const POD_NAMES = ['Doug', 'Michelle', 'Rebecca', 'Trice'];
-    _allDeals = (data.deals || []).map(d => {
-      const first = (d.ownerName || '').split(' ')[0];
-      const match = POD_NAMES.find(n => n.toLowerCase() === first.toLowerCase());
-      return { ...d, stage: d.stage || '', podMember: match || d.podMember || 'Other' };
-    });
+    const cutoff = new Date('2026-01-01');
+    _allDeals = (data.deals || [])
+      .map(d => {
+        const first = (d.ownerName || '').split(' ')[0];
+        const match = POD_NAMES.find(n => n.toLowerCase() === first.toLowerCase());
+        return { ...d, stage: d.stage || '', podMember: match || d.podMember || 'Other' };
+      })
+      .filter(d => !d.closeDate || new Date(d.closeDate) >= cutoff);
     renderPipeline(_allDeals);
     $('last-updated').textContent = 'Updated ' + now();
     $('footer-updated').textContent = 'Pipeline: live · Static data: ' + (window._staticDate || '—');
