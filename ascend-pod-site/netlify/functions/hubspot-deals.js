@@ -33,6 +33,7 @@ const DEAL_PROPERTIES = [
   'amount',
   'dealstage',
   'closedate',
+  'createdate',
   'hubspot_owner_id',
   'pipeline',
   'hs_deal_stage_probability',
@@ -54,10 +55,16 @@ exports.handler = async (event) => {
 
   const apiKey = process.env.HUBSPOT_API_KEY;
   if (!apiKey) {
+    // Diagnostic: list all env var NAMES (not values) to confirm what Netlify is passing
+    const envKeys = Object.keys(process.env).filter(k => !k.toLowerCase().includes('secret') && !k.toLowerCase().includes('token') && !k.toLowerCase().includes('key') && !k.toLowerCase().includes('pass'));
     return {
       statusCode: 500,
       headers,
-      body: JSON.stringify({ error: 'HUBSPOT_API_KEY environment variable is not set.' }),
+      body: JSON.stringify({
+        error: 'HUBSPOT_API_KEY environment variable is not set.',
+        hint: 'Check that the variable name is exactly HUBSPOT_API_KEY (all caps, underscores) and that you triggered a redeploy after adding it.',
+        otherEnvVarsPresent: envKeys.sort(),
+      }),
     };
   }
 
@@ -180,6 +187,7 @@ exports.handler = async (event) => {
         amount: p.amount ? parseFloat(p.amount) : null,
         stage: p.dealstage || '',
         closeDate: p.closedate || null,
+        createDate: p.createdate || null,
         ownerId,
         ownerName,
         podMember,
