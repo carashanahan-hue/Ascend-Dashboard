@@ -1,0 +1,12 @@
+{
+  "name": "ascend-pod-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Ascend Pod internal dashboard",
+  "dependencies": {
+    "googleapis": "^144.0.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
