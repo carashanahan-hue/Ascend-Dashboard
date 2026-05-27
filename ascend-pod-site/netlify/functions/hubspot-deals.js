@@ -155,7 +155,7 @@ exports.handler = async (event) => {
       if (ownersRes.ok) {
         const ownersData = await ownersRes.json();
         for (const owner of ownersData.results || []) {
-          ownerNames[owner.id] = `${owner.firstName} ${owner.lastName}`.trim();
+          ownerNames[String(owner.id)] = `${owner.firstName} ${owner.lastName}`.trim();
         }
       }
     }
