@@ -178,6 +178,16 @@
       color: var(--blue-gray);
       margin-top: 0.4rem;
     }
+    .stat-row--compact .stat-card {
+      padding: 0.75rem 0 0.75rem 1rem;
+    }
+    .stat-row--compact .stat-card:first-child { padding-left: 0; }
+    .stat-row--compact .stat-card__value {
+      font-size: var(--text-xl);
+    }
+    .stat-row--compact .stat-card__label {
+      margin-top: 0.2rem;
+    }
     .stat-card__sub {
       font-family: var(--font-sans);
       font-size: var(--text-xs);
@@ -695,7 +705,7 @@
       <h1 style="font-family:var(--font-serif);font-weight:300;font-size:var(--text-3xl);line-height:1.1;">Active Engagements</h1>
     </div>
 
-    <div class="stat-row" id="coaching-stats">
+    <div class="stat-row stat-row--compact" id="coaching-stats">
       <div class="stat-card"><div class="stat-card__value" id="cs-total">—</div><div class="stat-card__label">Total Coachees</div></div>
       <div class="stat-card"><div class="stat-card__value" id="cs-exec" style="color:#2d5a2d;">—</div><div class="stat-card__label">Active</div></div>
       <div class="stat-card"><div class="stat-card__value" id="cs-team" style="color:#8a4f00;">—</div><div class="stat-card__label">Ending</div></div>
