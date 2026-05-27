@@ -733,7 +733,10 @@ function showPartner(id) {
 /* ── Pipeline (HubSpot) ───────────────────────────────────────── */
 let _allDeals = [];
 
+const LOADING_HTML = `<div class="loading-state"><span class="loading-dot"></span><span class="loading-dot"></span><span class="loading-dot"></span><div style="margin-top:1rem;">Loading…</div></div>`;
+
 async function loadPipeline() {
+  $('pipeline-body').innerHTML = `<div class="loading-state"><span class="loading-dot"></span><span class="loading-dot"></span><span class="loading-dot"></span><div style="margin-top:1rem;">Loading deals from HubSpot…</div></div>`;
   try {
     const res = await fetch('/.netlify/functions/hubspot-deals');
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -807,6 +810,7 @@ function filterPipeline(owner, btn) {
 /* ── Load Balancing ───────────────────────────────────────────── */
 async function loadLB() {
   window._lbLoaded = true;
+  $('lb-overview').innerHTML = LOADING_HTML;
   try {
     const res = await fetch('data/load-balancing.json');
     const data = await res.json();
@@ -897,6 +901,7 @@ function renderLB(data) {
 /* ── Pod Coaching ─────────────────────────────────────────────── */
 async function loadCoaching() {
   window._coachLoaded = true;
+  $('coaching-body').innerHTML = LOADING_HTML;
   try {
     const res = await fetch('data/pod-coaching.json');
     const data = await res.json();
@@ -959,6 +964,7 @@ function renderCoaching(data) {
 /* ── Travel Calendar ──────────────────────────────────────────── */
 async function loadTravel() {
   window._travelLoaded = true;
+  $('travel-body').innerHTML = LOADING_HTML;
   try {
     const res = await fetch('data/travel.json');
     const data = await res.json();
