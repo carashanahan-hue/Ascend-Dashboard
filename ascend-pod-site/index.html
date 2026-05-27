@@ -739,8 +739,11 @@ async function loadPipeline() {
   $('pipeline-body').innerHTML = `<div class="loading-state"><span class="loading-dot"></span><span class="loading-dot"></span><span class="loading-dot"></span><div style="margin-top:1rem;">Loading deals from HubSpot…</div></div>`;
   try {
     const res = await fetch('/.netlify/functions/hubspot-deals');
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
+    if (!res.ok) {
+      const detail = data.detail || data.error || '';
+      throw new Error(`HTTP ${res.status} — ${detail}`);
+    }
     _allDeals = data.deals || [];
     renderPipeline(_allDeals);
     $('last-updated').textContent = 'Updated ' + now();
@@ -749,8 +752,9 @@ async function loadPipeline() {
     $('pipeline-body').innerHTML = `
       <div class="error-state">
         <strong>Could not load HubSpot deals.</strong><br>
-        ${err.message}<br><br>
-        <span class="text-xs text-muted">Make sure HUBSPOT_API_KEY is set in your Netlify environment variables.</span>
+        <code style="font-size:0.75rem;word-break:break-all;">${err.message}</code><br><br>
+        <span class="text-xs text-muted">Check that HUBSPOT_API_KEY is set correctly in Netlify → Site configuration → Environment variables, then trigger a redeploy.</span><br><br>
+        <span class="text-xs text-muted">Or open <a href="/.netlify/functions/hubspot-deals" target="_blank" style="color:var(--blue-gray);text-decoration:underline;">/.netlify/functions/hubspot-deals</a> directly to see the raw error.</span>
       </div>`;
   }
 }
