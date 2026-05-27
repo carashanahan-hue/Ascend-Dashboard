@@ -696,10 +696,10 @@
     </div>
 
     <div class="stat-row" id="coaching-stats">
-      <div class="stat-card"><div class="stat-card__value" id="cs-total">—</div><div class="stat-card__label">Total Engagements</div></div>
-      <div class="stat-card"><div class="stat-card__value" id="cs-exec">—</div><div class="stat-card__label">Exec Coaching</div></div>
-      <div class="stat-card"><div class="stat-card__value" id="cs-team">—</div><div class="stat-card__label">Team / Group</div></div>
-      <div class="stat-card"><div class="stat-card__value" id="cs-rum">—</div><div class="stat-card__label">2026 Coaching RUM</div></div>
+      <div class="stat-card"><div class="stat-card__value" id="cs-total">—</div><div class="stat-card__label">Total Coachees</div></div>
+      <div class="stat-card"><div class="stat-card__value" id="cs-exec" style="color:#2d5a2d;">—</div><div class="stat-card__label">Active</div></div>
+      <div class="stat-card"><div class="stat-card__value" id="cs-team" style="color:#8a4f00;">—</div><div class="stat-card__label">Ending</div></div>
+      <div class="stat-card"><div class="stat-card__value" id="cs-rum">—</div><div class="stat-card__label">Inactive</div></div>
     </div>
 
     <div id="coaching-body"></div>
@@ -1021,25 +1021,34 @@ async function loadCoaching() {
   }
 }
 
+function coachingStatusBadge(status) {
+  const s = (status || '').toLowerCase();
+  if (s === 'active')   return ['Active',   'badge--active'];
+  if (s === 'ending')   return ['Ending',   'badge--proposal'];
+  if (s === 'inactive') return ['Inactive', 'badge--scoping'];
+  return [status || '—', 'badge--scoping'];
+}
+
 function renderCoaching(data) {
   const coaches = data.coaches;
-  const all = coaches.flatMap(c => c.engagements);
-  const execCount = all.filter(e => e.type.toLowerCase().includes('exec')).length;
-  const teamCount = all.filter(e => e.type.toLowerCase().includes('team') || e.type.toLowerCase().includes('group')).length;
-  const totalRum = all.reduce((s, e) => s + (e.rum2026 || 0), 0);
+  const all = coaches.flatMap(c => c.coachees || []);
+  const activeCount   = all.filter(e => (e.status || '').toLowerCase() === 'active').length;
+  const endingCount   = all.filter(e => (e.status || '').toLowerCase() === 'ending').length;
+  const inactiveCount = all.filter(e => (e.status || '').toLowerCase() === 'inactive').length;
 
   $('cs-total').textContent = all.length;
-  $('cs-exec').textContent  = execCount;
-  $('cs-team').textContent  = teamCount;
-  $('cs-rum').textContent   = fmt$(totalRum);
+  $('cs-exec').textContent  = activeCount;
+  $('cs-team').textContent  = endingCount;
+  $('cs-rum').textContent   = inactiveCount;
 
   // ── Overview cards ─────────────────────────────────────────────
+  const activeCoachs = coaches.filter(c => (c.coachees || []).length > 0);
   let overviewHtml = '<div class="partners-overview" style="margin-bottom:3rem;">';
   for (const c of coaches) {
-    const color = OWNER_COLORS[c.coach] || '#999';
-    const cRum   = c.engagements.reduce((s, e) => s + (e.rum2026 || 0), 0);
-    const cExec  = c.engagements.filter(e => e.type.toLowerCase().includes('exec')).length;
-    const cTeam  = c.engagements.filter(e => e.type.toLowerCase().includes('team') || e.type.toLowerCase().includes('group')).length;
+    const color    = OWNER_COLORS[c.coach] || '#999';
+    const coachees = c.coachees || [];
+    const cActive  = coachees.filter(e => (e.status || '').toLowerCase() === 'active').length;
+    const cEnding  = coachees.filter(e => (e.status || '').toLowerCase() === 'ending').length;
     overviewHtml += `
       <div class="partner-card">
         <div class="partner-card__name">
@@ -1048,17 +1057,15 @@ function renderCoaching(data) {
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
           <div class="partner-stat">
-            <div class="partner-stat__val">${c.engagements.length}</div>
-            <div class="partner-stat__lbl">Engagements</div>
+            <div class="partner-stat__val">${coachees.length}</div>
+            <div class="partner-stat__lbl">Coachees</div>
           </div>
           <div class="partner-stat" style="border-left:1px solid var(--warm-neutral);">
-            <div class="partner-stat__val">${fmt$(cRum)}</div>
-            <div class="partner-stat__lbl">2026 RUM</div>
+            <div class="partner-stat__val" style="color:#2d5a2d;">${cActive}</div>
+            <div class="partner-stat__lbl">Active</div>
           </div>
         </div>
-        <div style="margin-top:0.75rem;padding-top:0.75rem;border-top:1px solid var(--warm-neutral);font-size:var(--text-xs);color:var(--blue-gray);">
-          ${cExec} exec&nbsp;&nbsp;·&nbsp;&nbsp;${cTeam} team / group
-        </div>
+        ${cEnding > 0 ? `<div style="margin-top:0.75rem;padding-top:0.75rem;border-top:1px solid var(--warm-neutral);font-size:var(--text-xs);color:#8a4f00;">${cEnding} ending</div>` : ''}
       </div>`;
   }
   overviewHtml += '</div>';
@@ -1071,21 +1078,27 @@ function renderCoaching(data) {
   tabsHtml += '</div><div id="coach-panes">';
 
   coaches.forEach((c, i) => {
+    const coachees = c.coachees || [];
     let rows = '';
-    for (const e of c.engagements) {
-      rows += `<tr>
-        <td><div class="deal-name">${e.client}</div><div class="deal-sub">${e.coachee}</div></td>
-        <td><span class="badge badge--scoping">${e.type}</span></td>
-        <td class="money">${e.rum2026 > 0 ? fmt$(e.rum2026) : '<span class="text-muted">—</span>'}</td>
-        <td class="text-muted text-xs">${fmtDate(e.startDate)} – ${fmtDate(e.endDate)}</td>
-        <td class="text-muted text-xs">${e.notes || ''}</td>
-      </tr>`;
+    if (coachees.length === 0) {
+      rows = `<tr><td colspan="5" style="padding:2rem 0;color:var(--blue-gray);font-size:var(--text-sm);">No coachees listed — update data/pod-coaching.json to add entries.</td></tr>`;
+    } else {
+      for (const e of coachees) {
+        const [statusLabel, statusClass] = coachingStatusBadge(e.status);
+        rows += `<tr>
+          <td><div class="deal-name">${e.company}</div></td>
+          <td><div class="deal-name" style="font-weight:400;">${e.name}</div>${e.title ? `<div class="deal-sub">${e.title}</div>` : ''}</td>
+          <td><span class="badge ${statusClass}">${statusLabel}</span></td>
+          <td class="text-muted">${e.triumOM || '—'}</td>
+          <td class="text-muted">${e.schedulingContact || '—'}</td>
+        </tr>`;
+      }
     }
     tabsHtml += `
       <div class="partner-pane ${i === 0 ? 'active' : ''}" id="cp-${c.coach}">
         <table class="data-table">
           <thead><tr>
-            <th>Client / Coachee</th><th>Type</th><th>2026 RUM</th><th>Dates</th><th>Notes</th>
+            <th>Company</th><th>Coachee</th><th>Status</th><th>Trium OM</th><th>Scheduling Contact</th>
           </tr></thead>
           <tbody>${rows}</tbody>
         </table>
