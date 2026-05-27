@@ -340,13 +340,13 @@
     /* ── All-partners overview grid ─────────────────────────────── */
     .partners-overview {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
       gap: 2px;
-      margin-bottom: 3rem;
+      margin-bottom: 2rem;
     }
     .partner-card {
       background: var(--warm-50);
-      padding: 1.5rem;
+      padding: 0.85rem 1rem;
     }
     .partner-card__name {
       font-family: var(--font-sans);
@@ -355,21 +355,23 @@
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--blue-gray);
-      margin-bottom: 1rem;
+      margin-bottom: 0.6rem;
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.4rem;
     }
     .partner-card__name::before {
       content: '';
       display: block;
-      width: 10px;
-      height: 10px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
     }
-    .partner-card .partner-stat { padding: 0.75rem 0; border-right: none; }
+    .partner-card .partner-stat { padding: 0.4rem 0; border-right: none; }
     .partner-card .partner-stat + .partner-stat { border-top: 1px solid var(--warm-neutral); }
     .partner-card .partner-stat:first-child { border-top: none; }
+    .partner-card .partner-stat__val { font-size: var(--text-lg); }
+    .partner-card .partner-stat__lbl { font-size: 0.65rem; margin-top: 0.1rem; }
 
     /* ── Coaching Grid ───────────────────────────────────────────── */
     .coaching-section { margin-bottom: 3.5rem; }
@@ -1075,7 +1077,7 @@ function renderCoaching(data) {
             <div class="partner-stat__lbl">Active</div>
           </div>
         </div>
-        ${cEnding > 0 ? `<div style="margin-top:0.75rem;padding-top:0.75rem;border-top:1px solid var(--warm-neutral);font-size:var(--text-xs);color:#8a4f00;">${cEnding} ending</div>` : ''}
+        ${cEnding > 0 ? `<div style="margin-top:0.4rem;padding-top:0.4rem;border-top:1px solid var(--warm-neutral);font-size:0.65rem;color:#8a4f00;letter-spacing:0.08em;text-transform:uppercase;">${cEnding} ending</div>` : ''}
       </div>`;
   }
   overviewHtml += '</div>';
