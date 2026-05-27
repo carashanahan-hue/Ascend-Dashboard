@@ -494,6 +494,88 @@
       letter-spacing: 0.04em;
     }
 
+    /* ── Capacity Bars (Load Balancing) ─────────────────────────── */
+    .lb-capacity-grid {
+      margin-bottom: 3rem;
+    }
+    .lb-person-row {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 1.25rem;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    .lb-person-name {
+      font-family: var(--font-sans);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--carbon);
+    }
+    .lb-bar-wrap { display: flex; flex-direction: column; gap: 0.3rem; }
+    .lb-bar {
+      display: flex;
+      height: 28px;
+      background: var(--warm-50);
+      overflow: hidden;
+    }
+    .lb-seg {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-sans);
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--canvas);
+      transition: width var(--ease);
+      flex-shrink: 0;
+    }
+    .lb-seg--seata    { background: #634e42; }
+    .lb-seg--seatb    { background: #a6c1b5; color: #2d4a3e; }
+    .lb-seg--principal { background: #53616e; }
+    .lb-seg--cx       { background: #c4b8b3; color: var(--carbon); }
+    .lb-seg--om       { background: #ddd6d3; color: var(--carbon); }
+    .lb-bar-meta {
+      font-size: var(--text-xs);
+      color: var(--blue-gray);
+      letter-spacing: 0.04em;
+    }
+    .lb-legend {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 0.75rem;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+    }
+    .lb-legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: var(--text-xs);
+      color: var(--blue-gray);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .lb-swatch {
+      width: 12px;
+      height: 12px;
+      flex-shrink: 0;
+    }
+    .lb-swatch--seata    { background: #634e42; }
+    .lb-swatch--seatb    { background: #a6c1b5; }
+    .lb-swatch--principal { background: #53616e; }
+    .lb-swatch--cx       { background: #c4b8b3; }
+    .lb-swatch--om       { background: #ddd6d3; border: 1px solid var(--warm-neutral); }
+
+    /* ── Outside-pod row dimming ─────────────────────────────────── */
+    .outside-pod td { opacity: 0.65; }
+    .outside-pod td:first-child { opacity: 1; }
+    .outside-pod td:first-child .deal-name { color: var(--blue-gray); }
+
+    /* ── Pipeline stage filter ───────────────────────────────────── */
+    .filter-strip + .filter-strip { margin-top: -0.5rem; }
+
     /* ── Utility ─────────────────────────────────────────────────── */
     .money { font-variant-numeric: tabular-nums; }
     .text-muted { color: var(--blue-gray); }
@@ -548,26 +630,36 @@
 
     <!-- Stats (populated by JS) -->
     <div class="stat-row" id="pipeline-stats">
-      <div class="stat-card"><div class="stat-card__value" id="ps-total">—</div><div class="stat-card__label">Total Pipeline</div></div>
-      <div class="stat-card"><div class="stat-card__value" id="ps-count">—</div><div class="stat-card__label">Open Deals</div></div>
+      <div class="stat-card"><div class="stat-card__value" id="ps-total">—</div><div class="stat-card__label">2026 Booked RUM</div></div>
+      <div class="stat-card"><div class="stat-card__value" id="ps-count">—</div><div class="stat-card__label">2026 Projected</div></div>
       <div class="stat-card"><div class="stat-card__value" id="ps-proposals">—</div><div class="stat-card__label">Proposals Out</div></div>
-      <div class="stat-card"><div class="stat-card__value accent" id="ps-closing">—</div><div class="stat-card__label">Closing Next 60 Days</div></div>
+      <div class="stat-card"><div class="stat-card__value accent" id="ps-closing">—</div><div class="stat-card__label">Active Priority</div></div>
     </div>
 
     <!-- Filters -->
     <div class="filter-strip">
       <span class="filter-label">Owner</span>
-      <button class="filter-btn active" onclick="filterPipeline('all',this)">All</button>
-      <button class="filter-btn" onclick="filterPipeline('Doug',this)">Doug</button>
-      <button class="filter-btn" onclick="filterPipeline('Michelle',this)">Michelle</button>
-      <button class="filter-btn" onclick="filterPipeline('Rebecca',this)">Rebecca</button>
-      <button class="filter-btn" onclick="filterPipeline('Trice',this)">Trice</button>
+      <button class="filter-btn active" data-owner="all" onclick="setPipelineFilter('owner','all',this)">All</button>
+      <button class="filter-btn" data-owner="Doug" onclick="setPipelineFilter('owner','Doug',this)">Doug</button>
+      <button class="filter-btn" data-owner="Michelle" onclick="setPipelineFilter('owner','Michelle',this)">Michelle</button>
+      <button class="filter-btn" data-owner="Rebecca" onclick="setPipelineFilter('owner','Rebecca',this)">Rebecca</button>
+      <button class="filter-btn" data-owner="Trice" onclick="setPipelineFilter('owner','Trice',this)">Trice</button>
+    </div>
+    <div class="filter-strip">
+      <span class="filter-label">Stage</span>
+      <button class="filter-btn active" data-stage="all" onclick="setPipelineFilter('stage','all',this)">All</button>
+      <button class="filter-btn" data-stage="1,2" onclick="setPipelineFilter('stage','1,2',this)">Scoping</button>
+      <button class="filter-btn" data-stage="3a" onclick="setPipelineFilter('stage','3a',this)">Proposals</button>
+      <button class="filter-btn" data-stage="4" onclick="setPipelineFilter('stage','4',this)">Verbal</button>
+      <button class="filter-btn" data-stage="7a" onclick="setPipelineFilter('stage','7a',this)">Active Priority</button>
+      <button class="filter-btn" data-stage="7b" onclick="setPipelineFilter('stage','7b',this)">Active</button>
+      <button class="filter-btn" data-stage="8" onclick="setPipelineFilter('stage','8',this)">Completed</button>
     </div>
 
     <div id="pipeline-body">
       <div class="loading-state">
         <span class="loading-dot"></span><span class="loading-dot"></span><span class="loading-dot"></span>
-        <div style="margin-top:1rem;">Loading deals from HubSpot…</div>
+        <div style="margin-top:1rem;">Loading pipeline data…</div>
       </div>
     </div>
   </div>
@@ -580,27 +672,16 @@
   <div class="page-shell">
     <div style="margin-bottom:2.5rem;">
       <p class="section-label">Load Balancing</p>
-      <h1 style="font-family:var(--font-serif);font-weight:300;font-size:var(--text-3xl);line-height:1.1;">Project Runway</h1>
+      <h1 style="font-family:var(--font-serif);font-weight:300;font-size:var(--text-3xl);line-height:1.1;">Capacity at a Glance</h1>
     </div>
 
-    <!-- Overall stats -->
-    <div class="stat-row" id="lb-stats">
-      <div class="stat-card"><div class="stat-card__value" id="lb-active">—</div><div class="stat-card__label">Active Projects</div></div>
-      <div class="stat-card"><div class="stat-card__value" id="lb-q2">—</div><div class="stat-card__label">Ending Q2</div><div class="stat-card__sub" id="lb-q2-pct"></div></div>
-      <div class="stat-card"><div class="stat-card__value" id="lb-q3">—</div><div class="stat-card__label">Ending Q3</div></div>
-      <div class="stat-card"><div class="stat-card__value" id="lb-q4">—</div><div class="stat-card__label">Stable Q4+</div></div>
+    <!-- Capacity bars (populated by JS) -->
+    <div id="lb-capacity">
+      <div class="loading-state"><span class="loading-dot"></span><span class="loading-dot"></span><span class="loading-dot"></span></div>
     </div>
 
-    <!-- Partner overview cards -->
-    <p class="section-label mb-1">By partner</p>
-    <hr class="section-rule" />
-    <div class="partners-overview" id="lb-overview"></div>
-
-    <!-- Partner tabs -->
-    <p class="section-label mb-1">Detailed view</p>
-    <hr class="section-rule" />
-    <div class="partner-tabs" id="lb-partner-tabs"></div>
-    <div id="lb-partner-panes"></div>
+    <!-- Active Clients table (populated by JS) -->
+    <div id="lb-clients"></div>
   </div>
 </div>
 
@@ -692,13 +773,13 @@ function getQuarterBadgeClass(q) {
 
 function stageToBadge(stage) {
   const s = (stage || '').toLowerCase();
-  if (s.includes('proposal') || s.includes('3a')) return ['Proposal', 'badge--proposal'];
-  if (s.includes('scop') || s.includes('1,2') || s.includes('meeting')) return ['Scoping', 'badge--scoping'];
-  if (s.includes('verbal') || s.includes('4 ')) return ['Verbal', 'badge--proposal'];
-  if (s.includes('active') || s.includes('7a') || s.includes('7b')) return ['Active', 'badge--active'];
-  if (s.includes('won') || s.includes('closed won')) return ['Won', 'badge--won'];
-  if (s.includes('lost')) return ['Lost', 'badge--lost'];
-  return [stage, 'badge--scoping'];
+  if (s.startsWith('8')) return ['Completed', 'badge--won'];
+  if (s.startsWith('7a')) return ['Active Priority', 'badge--active'];
+  if (s.startsWith('7b')) return ['Active', 'badge--active'];
+  if (s.startsWith('4')) return ['Verbal', 'badge--proposal'];
+  if (s.startsWith('3a')) return ['Proposal', 'badge--proposal'];
+  if (s.startsWith('1,2') || s.includes('scop') || s.includes('meeting')) return ['Scoping', 'badge--scoping'];
+  return [stage || '—', 'badge--scoping'];
 }
 
 function ownerChip(name) {
@@ -730,185 +811,201 @@ function showPartner(id) {
   document.querySelector(`[data-partner="${id}"]`).classList.add('active');
 }
 
-/* ── Pipeline (HubSpot) ───────────────────────────────────────── */
+/* ── Pipeline (static JSON) ───────────────────────────────────── */
 let _allDeals = [];
+let _activeOwner = 'all';
+let _activeStage = 'all';
 
 const LOADING_HTML = `<div class="loading-state"><span class="loading-dot"></span><span class="loading-dot"></span><span class="loading-dot"></span><div style="margin-top:1rem;">Loading…</div></div>`;
 
 async function loadPipeline() {
-  $('pipeline-body').innerHTML = `<div class="loading-state"><span class="loading-dot"></span><span class="loading-dot"></span><span class="loading-dot"></span><div style="margin-top:1rem;">Loading deals from HubSpot…</div></div>`;
+  $('pipeline-body').innerHTML = `<div class="loading-state"><span class="loading-dot"></span><span class="loading-dot"></span><span class="loading-dot"></span><div style="margin-top:1rem;">Loading pipeline data…</div></div>`;
   try {
-    const res = await fetch('/.netlify/functions/hubspot-deals');
+    const res = await fetch('data/pipeline-2026.json');
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
-    if (!res.ok) {
-      const detail = data.detail || data.error || '';
-      throw new Error(`HTTP ${res.status} — ${detail}`);
-    }
-    // Re-map podMember on the frontend using first-name match against ownerName,
-    // since HUBSPOT_OWNER_* env vars may not be configured in Netlify.
-    // Backend already filters: createdate >= 2026-01-01 and excludes closedlost.
-    // Frontend just re-maps podMember using first-name match on ownerName.
-    const POD_NAMES = ['Doug', 'Michelle', 'Rebecca', 'Trice'];
-    _allDeals = (data.deals || []).map(d => {
-      const first = (d.ownerName || '').split(' ')[0];
-      const match = POD_NAMES.find(n => n.toLowerCase() === first.toLowerCase());
-      return { ...d, stage: d.stage || '', podMember: match || d.podMember || 'Other' };
-    });
+    _allDeals = data.deals || [];
+    window._staticDate = data.lastUpdated;
+    _activeOwner = 'all';
+    _activeStage = 'all';
+    // Reset filter buttons
+    document.querySelectorAll('[data-owner]').forEach(b => b.classList.toggle('active', b.dataset.owner === 'all'));
+    document.querySelectorAll('[data-stage]').forEach(b => b.classList.toggle('active', b.dataset.stage === 'all'));
     renderPipeline(_allDeals);
     $('last-updated').textContent = 'Updated ' + now();
-    $('footer-updated').textContent = 'Pipeline: live · Static data: ' + (window._staticDate || '—');
+    $('footer-updated').textContent = 'Data as of ' + (data.lastUpdated || '—');
   } catch (err) {
-    $('pipeline-body').innerHTML = `
-      <div class="error-state">
-        <strong>Could not load HubSpot deals.</strong><br>
-        <code style="font-size:0.75rem;word-break:break-all;">${err.message}</code><br><br>
-        <span class="text-xs text-muted">Check that HUBSPOT_API_KEY is set correctly in Netlify → Site configuration → Environment variables, then trigger a redeploy.</span><br><br>
-        <span class="text-xs text-muted">Or open <a href="/.netlify/functions/hubspot-deals" target="_blank" style="color:var(--blue-gray);text-decoration:underline;">/.netlify/functions/hubspot-deals</a> directly to see the raw error.</span>
-      </div>`;
+    $('pipeline-body').innerHTML = `<div class="error-state"><strong>Could not load pipeline data.</strong> ${err.message}</div>`;
   }
 }
 
 function renderPipeline(deals) {
-  // Stats
-  const openDeals = deals.filter(d => (d.stage || '').toLowerCase() !== 'closedlost');
-  const proposals = deals.filter(d => {
-    const s = d.stage.toLowerCase();
-    return s.includes('proposal') || s.includes('3a');
-  });
-  const totalAmt = openDeals.reduce((s, d) => s + (d.amount || 0), 0);
-  const now60 = new Date(); now60.setDate(now60.getDate() + 60);
-  const closing60 = openDeals.filter(d => d.closeDate && new Date(d.closeDate) <= now60);
+  const booked   = deals.reduce((s, d) => s + (d.rum2026 || 0), 0);
+  const projected = deals.reduce((s, d) => s + (d.projected2026 || 0), 0);
+  const proposals = deals.filter(d => (d.status || '').startsWith('3a')).length;
+  const activePri = deals.filter(d => (d.status || '').startsWith('7a')).length;
 
-  $('ps-total').textContent    = fmt$(totalAmt);
-  $('ps-count').textContent    = openDeals.length;
-  $('ps-proposals').textContent = proposals.length;
-  $('ps-closing').textContent  = closing60.length;
+  $('ps-total').textContent     = fmt$(booked);
+  $('ps-count').textContent     = fmt$(projected);
+  $('ps-proposals').textContent = proposals;
+  $('ps-closing').textContent   = activePri;
 
   if (deals.length === 0) {
-    $('pipeline-body').innerHTML = '<p class="text-muted" style="padding:2rem 0;">No deals found. Check your HubSpot filters.</p>';
+    $('pipeline-body').innerHTML = '<p class="text-muted" style="padding:2rem 0;">No deals match the current filters.</p>';
     return;
   }
 
-  // Table
   let html = `<table class="data-table">
     <thead><tr>
-      <th>Deal</th>
+      <th>Client / Prospect</th>
       <th>Owner</th>
-      <th>Amount</th>
-      <th>Stage</th>
-      <th>Close Date</th>
+      <th>Status</th>
+      <th style="text-align:right;">2026 RUM</th>
+      <th style="text-align:right;">2026 Projected</th>
+      <th style="text-align:right;">Total Rev</th>
+      <th>Pod %</th>
     </tr></thead><tbody>`;
 
   for (const d of deals) {
-    const [stageLabel, stageClass] = stageToBadge(d.stage);
+    const [stageLabel, stageClass] = stageToBadge(d.status);
     html += `<tr>
-      <td><div class="deal-name">${d.name}</div>${d.description ? `<div class="deal-sub">${d.description.substring(0, 80)}</div>` : ''}</td>
-      <td>${ownerChip(d.podMember || d.ownerName)}</td>
-      <td class="money">${fmt$(d.amount)}</td>
+      <td><div class="deal-name">${d.name}</div></td>
+      <td>${ownerChip(d.owner)}</td>
       <td><span class="badge ${stageClass}">${stageLabel}</span></td>
-      <td class="text-muted">${fmtDate(d.closeDate)}</td>
+      <td class="money" style="text-align:right;">${d.rum2026 > 0 ? fmt$(d.rum2026) : '<span class="text-muted">—</span>'}</td>
+      <td class="money" style="text-align:right;">${d.projected2026 > 0 ? fmt$(d.projected2026) : '<span class="text-muted">—</span>'}</td>
+      <td class="money" style="text-align:right;">${d.totalRev ? fmt$(d.totalRev) : '<span class="text-muted">TBD</span>'}</td>
+      <td class="text-muted">${d.podPct > 0 ? d.podPct + '%' : '<span style="opacity:0.5;">—</span>'}</td>
     </tr>`;
   }
   html += '</tbody></table>';
   $('pipeline-body').innerHTML = html;
 }
 
-function filterPipeline(owner, btn) {
-  document.querySelectorAll('.filter-strip .filter-btn').forEach(b => b.classList.remove('active'));
+function setPipelineFilter(type, value, btn) {
+  if (type === 'owner') {
+    document.querySelectorAll('[data-owner]').forEach(b => b.classList.remove('active'));
+    _activeOwner = value;
+  } else {
+    document.querySelectorAll('[data-stage]').forEach(b => b.classList.remove('active'));
+    _activeStage = value;
+  }
   btn.classList.add('active');
-  const filtered = owner === 'all' ? _allDeals : _allDeals.filter(d => d.podMember === owner);
+  let filtered = _allDeals;
+  if (_activeOwner !== 'all') filtered = filtered.filter(d => d.owner === _activeOwner);
+  if (_activeStage !== 'all') filtered = filtered.filter(d => (d.status || '').toLowerCase().startsWith(_activeStage.toLowerCase()));
   renderPipeline(filtered);
 }
 
 /* ── Load Balancing ───────────────────────────────────────────── */
 async function loadLB() {
   window._lbLoaded = true;
-  $('lb-overview').innerHTML = LOADING_HTML;
   try {
     const res = await fetch('data/load-balancing.json');
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
     window._staticDate = data.lastUpdated;
     renderLB(data);
   } catch (err) {
-    $('lb-overview').innerHTML = `<div class="error-state">Could not load load-balancing.json: ${err.message}</div>`;
+    $('lb-capacity').innerHTML = `<div class="error-state">Could not load load-balancing.json: ${err.message}</div>`;
   }
 }
 
 function renderLB(data) {
-  const partners = data.partners;
-  const allProjects = partners.flatMap(p => p.projects);
-  const active = allProjects.filter(p => p.status === 'active' || p.status === 'active_priority');
-  const q2 = active.filter(p => p.quarter === 'Q2');
-  const q3 = active.filter(p => p.quarter === 'Q3');
-  const q4plus = active.filter(p => p.quarter === 'Q4' || p.quarter === 'Q1 2027');
+  const people = data.people || [];
+  const clients = data.clients || [];
 
-  $('lb-active').textContent = active.length;
-  $('lb-q2').textContent = q2.length;
-  $('lb-q2-pct').textContent = Math.round(q2.length / active.length * 100) + '% of active load';
-  $('lb-q3').textContent = q3.length;
-  $('lb-q4').textContent = q4plus.length;
+  // ── Capacity bars ──────────────────────────────────────────────
+  const BAR_MAX = Math.max(10, ...people.map(p => p.seatA + p.seatB + p.principal + p.cx + p.om));
+  const pct = v => (v / BAR_MAX * 100).toFixed(1) + '%';
 
-  // Partner overview cards
-  let overviewHtml = '';
-  for (const p of partners) {
-    const color = OWNER_COLORS[p.name] || '#999';
-    const pActive = p.projects.filter(pr => pr.status === 'active' || pr.status === 'active_priority');
-    const pQ2 = pActive.filter(pr => pr.quarter === 'Q2');
-    const pQ2Risk = pQ2.reduce((s, pr) => s + (pr.rum2026 || 0), 0);
-    overviewHtml += `
-      <div class="partner-card">
-        <div class="partner-card__name" style="--dot-color:${color}">
-          <span style="width:10px;height:10px;border-radius:50%;background:${color};display:block;flex-shrink:0;"></span>
-          ${p.name}
+  const segDef = [
+    { key: 'seatA',     cls: 'lb-seg--seata',    label: 'A' },
+    { key: 'seatB',     cls: 'lb-seg--seatb',    label: 'B' },
+    { key: 'principal', cls: 'lb-seg--principal', label: 'P' },
+    { key: 'cx',        cls: 'lb-seg--cx',        label: 'CX' },
+    { key: 'om',        cls: 'lb-seg--om',        label: 'OM' },
+  ];
+
+  let capHtml = '<div class="lb-capacity-grid">';
+  for (const person of people) {
+    const segs = segDef.map(s => {
+      const v = person[s.key] || 0;
+      if (v === 0) return '';
+      return `<div class="lb-seg ${s.cls}" style="width:${pct(v)}" title="${s.key === 'seatA' ? 'Seat A' : s.key === 'seatB' ? 'Seat B' : s.key.charAt(0).toUpperCase() + s.key.slice(1)}: ${v}"><span>${v}</span></div>`;
+    }).join('');
+    capHtml += `
+      <div class="lb-person-row">
+        <div class="lb-person-name">${person.name}</div>
+        <div class="lb-bar-wrap">
+          <div class="lb-bar">${segs}</div>
+          <div class="lb-bar-meta">${person.strategyEngagements} strategy engagement${person.strategyEngagements !== 1 ? 's' : ''} &nbsp;·&nbsp; ${person.coachees} coachee${person.coachees !== 1 ? 's' : ''}</div>
         </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
-          <div class="partner-stat"><div class="partner-stat__val">${pActive.length}</div><div class="partner-stat__lbl">Active</div></div>
-          <div class="partner-stat" style="border-left:1px solid var(--warm-neutral)"><div class="partner-stat__val ${pQ2.length > 0 ? 'warn' : ''}">${pQ2.length}</div><div class="partner-stat__lbl">Ending Q2</div></div>
-        </div>
-        ${pQ2Risk > 0 ? `<div style="margin-top:0.75rem;padding-top:0.75rem;border-top:1px solid var(--warm-neutral);font-size:var(--text-xs);color:var(--spice);">${fmt$(pQ2Risk)} Q2 at risk</div>` : ''}
       </div>`;
   }
-  $('lb-overview').innerHTML = overviewHtml;
+  capHtml += '</div>';
 
-  // Partner tabs + panes
-  let tabsHtml = '', panesHtml = '';
-  partners.forEach((p, i) => {
-    const isFirst = i === 0;
-    tabsHtml += `<button class="partner-tab ${isFirst ? 'active' : ''}" data-partner="${p.id}" onclick="showPartner('${p.id}')">${p.name}</button>`;
-    const pActive = p.projects.filter(pr => pr.status === 'active' || pr.status === 'active_priority');
-    const pQ2 = pActive.filter(pr => pr.quarter === 'Q2');
-    const pQ2Risk = pQ2.reduce((s, pr) => s + (pr.rum2026 || 0), 0);
-    const pTotalRum = pActive.reduce((s, pr) => s + (pr.rum2026 || 0), 0);
+  // Legend
+  capHtml += `
+    <div class="lb-legend">
+      <span class="lb-legend-item"><span class="lb-swatch lb-swatch--seata"></span>Seat A</span>
+      <span class="lb-legend-item"><span class="lb-swatch lb-swatch--seatb"></span>Seat B</span>
+      <span class="lb-legend-item"><span class="lb-swatch lb-swatch--cx"></span>CX</span>
+      <span class="lb-legend-item"><span class="lb-swatch lb-swatch--om"></span>OM</span>
+    </div>`;
 
-    let rowsHtml = '';
-    for (const pr of p.projects.sort((a, b) => a.endDate?.localeCompare(b.endDate || '') || 0)) {
-      const qClass = getQuarterBadgeClass(pr.quarter);
-      rowsHtml += `
-        <div class="project-row">
-          <div>
-            <div class="project-client">${pr.client}</div>
-            <div class="project-desc">${pr.description}</div>
-          </div>
-          <div class="money"><div class="project-rum">${fmt$(pr.rum2026)}</div><div class="project-rum-label">2026 RUM</div></div>
-          <div><span class="badge ${qClass}">${pr.quarter}</span></div>
-          <div style="font-size:var(--text-xs);color:var(--blue-gray);">${fmtDate(pr.endDate)}</div>
-        </div>`;
-    }
+  $('lb-capacity').innerHTML = capHtml;
 
-    panesHtml += `
-      <div class="partner-pane ${isFirst ? 'active' : ''}" id="pp-${p.id}">
-        <div class="stat-row" style="margin-bottom:2rem;">
-          <div class="stat-card"><div class="stat-card__value">${pActive.length}</div><div class="stat-card__label">Active Projects</div></div>
-          <div class="stat-card"><div class="stat-card__value ${pQ2.length > 0 ? '' : ''}">${pQ2.length}</div><div class="stat-card__label">Ending Q2</div></div>
-          <div class="stat-card"><div class="stat-card__value">${fmt$(pQ2Risk)}</div><div class="stat-card__label">Q2 Revenue at Risk</div></div>
-          <div class="stat-card"><div class="stat-card__value">${fmt$(pTotalRum)}</div><div class="stat-card__label">Total 2026 RUM</div></div>
-        </div>
-        ${rowsHtml}
-      </div>`;
-  });
+  // ── Active Clients table ───────────────────────────────────────
+  const ascendClients  = clients.filter(c => !c.outsidePod);
+  const outsideClients = clients.filter(c => c.outsidePod);
 
-  $('lb-partner-tabs').innerHTML = tabsHtml;
-  $('lb-partner-panes').innerHTML = panesHtml;
+  function clientRows(list) {
+    return list.map(c => `
+      <tr class="${c.outsidePod ? 'outside-pod' : ''}">
+        <td>
+          <div class="deal-name">${c.name}</div>
+          ${c.notes ? `<div class="deal-sub">${c.notes}</div>` : ''}
+        </td>
+        <td><span class="badge badge--active">${c.status}</span></td>
+        <td>${c.seatA || '<span class="text-muted">—</span>'}</td>
+        <td>${c.seatB || '<span class="text-muted">—</span>'}</td>
+        <td>${c.principal || '<span class="text-muted">—</span>'}</td>
+        <td>${c.cx || '<span class="text-muted">—</span>'}</td>
+        <td>${c.om || '<span class="text-muted">—</span>'}</td>
+        <td>${c.coachingOps || '<span class="text-muted">—</span>'}</td>
+        <td>${c.coachOther || '<span class="text-muted">—</span>'}</td>
+      </tr>`).join('');
+  }
+
+  const theadRow = `<thead><tr>
+    <th>Client</th><th>Status</th><th>Seat A</th><th>Seat B</th>
+    <th>Principal</th><th>CX</th><th>OM</th><th>Coaching Ops</th><th>Coach / Other</th>
+  </tr></thead>`;
+
+  let clientHtml = '';
+
+  if (ascendClients.length > 0) {
+    clientHtml += `
+      <p class="section-label mb-1">Ascend Pod · ${ascendClients.length} active</p>
+      <hr class="section-rule" />
+      <table class="data-table" style="margin-bottom:3rem;">
+        ${theadRow}
+        <tbody>${clientRows(ascendClients)}</tbody>
+      </table>`;
+  }
+
+  if (outsideClients.length > 0) {
+    clientHtml += `
+      <p class="section-label mb-1">Outside-of-pod clients · ${outsideClients.length}</p>
+      <hr class="section-rule" />
+      <table class="data-table">
+        ${theadRow}
+        <tbody>${clientRows(outsideClients)}</tbody>
+      </table>`;
+  }
+
+  $('lb-clients').innerHTML = clientHtml;
 }
 
 /* ── Pod Coaching ─────────────────────────────────────────────── */
@@ -1029,7 +1126,11 @@ function refreshAll() {
   window._travelLoaded = false;
   loadPipeline();
   const activeTab = document.querySelector('.tab-nav__btn.active').dataset.tab;
-  if (activeTab === 'load') loadLB();
+  if (activeTab === 'load') {
+    $('lb-capacity').innerHTML = LOADING_HTML;
+    $('lb-clients').innerHTML = '';
+    loadLB();
+  }
   if (activeTab === 'coaching') loadCoaching();
   if (activeTab === 'travel') loadTravel();
 }
