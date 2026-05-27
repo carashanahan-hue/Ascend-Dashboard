@@ -1,86 +1,110 @@
 {
   "lastUpdated": "2026-05-27",
-  "note": "Update this file to reflect current travel. Dates use YYYY-MM-DD format. Locations use City, State/Country.",
-  "partners": ["Doug", "Michelle", "Rebecca", "Trice"],
+  "note": "Update this file to reflect current travel. Dates use YYYY-MM-DD format.",
+  "partners": ["Doug", "Michelle", "Rebecca", "Trice", "Meghan", "Julianne", "Austin"],
   "weeks": [
     {
       "weekStart": "2026-05-25",
       "weekLabel": "May 25–29",
       "locations": {
-        "Doug": { "city": "San Francisco, CA", "home": true, "note": "" },
-        "Michelle": { "city": "New York, NY", "home": false, "note": "Client offsite – Patreon" },
-        "Rebecca": { "city": "San Francisco, CA", "home": true, "note": "" },
-        "Trice": { "city": "San Francisco, CA", "home": true, "note": "" }
+        "Doug":     { "city": "San Francisco, CA", "home": true,  "note": "" },
+        "Michelle": { "city": "New York, NY",       "home": false, "note": "Patreon offsite" },
+        "Rebecca":  { "city": "Seattle, WA",         "home": true,  "note": "" },
+        "Trice":    { "city": "Atlanta, GA",          "home": true,  "note": "" },
+        "Meghan":   { "city": "Santa Barbara, CA",   "home": true,  "note": "" },
+        "Julianne": { "city": "Sacramento, CA",      "home": true,  "note": "" },
+        "Austin":   { "city": "Seattle, WA",         "home": true,  "note": "" }
       }
     },
     {
       "weekStart": "2026-06-01",
       "weekLabel": "Jun 1–5",
       "locations": {
-        "Doug": { "city": "Dallas, TX", "home": false, "note": "HealthEquity onsite" },
-        "Michelle": { "city": "San Francisco, CA", "home": true, "note": "" },
-        "Rebecca": { "city": "San Francisco, CA", "home": true, "note": "" },
-        "Trice": { "city": "Chicago, IL", "home": false, "note": "LaunchDarkly offsite" }
+        "Doug":     { "city": "Dallas, TX",          "home": false, "note": "HealthEquity onsite" },
+        "Michelle": { "city": "San Francisco, CA",   "home": true,  "note": "" },
+        "Rebecca":  { "city": "Seattle, WA",         "home": true,  "note": "" },
+        "Trice":    { "city": "Chicago, IL",          "home": false, "note": "LaunchDarkly offsite" },
+        "Meghan":   { "city": "Santa Barbara, CA",   "home": true,  "note": "" },
+        "Julianne": { "city": "Sacramento, CA",      "home": true,  "note": "" },
+        "Austin":   { "city": "Seattle, WA",         "home": true,  "note": "" }
       }
     },
     {
       "weekStart": "2026-06-08",
       "weekLabel": "Jun 8–12",
       "locations": {
-        "Doug": { "city": "San Francisco, CA", "home": true, "note": "" },
-        "Michelle": { "city": "Los Angeles, CA", "home": false, "note": "Gap IndigoX session" },
-        "Rebecca": { "city": "New York, NY", "home": false, "note": "Scopely offsite" },
-        "Trice": { "city": "San Francisco, CA", "home": true, "note": "" }
+        "Doug":     { "city": "San Francisco, CA",   "home": true,  "note": "" },
+        "Michelle": { "city": "Los Angeles, CA",     "home": false, "note": "Gap IndigoX session" },
+        "Rebecca":  { "city": "New York, NY",        "home": false, "note": "Scopely offsite" },
+        "Trice":    { "city": "Atlanta, GA",          "home": true,  "note": "" },
+        "Meghan":   { "city": "Santa Barbara, CA",   "home": true,  "note": "" },
+        "Julianne": { "city": "Sacramento, CA",      "home": true,  "note": "" },
+        "Austin":   { "city": "Seattle, WA",         "home": true,  "note": "" }
       }
     },
     {
       "weekStart": "2026-06-15",
       "weekLabel": "Jun 15–19",
       "locations": {
-        "Doug": { "city": "San Francisco, CA", "home": true, "note": "" },
-        "Michelle": { "city": "San Francisco, CA", "home": true, "note": "" },
-        "Rebecca": { "city": "Austin, TX", "home": false, "note": "Temporal client meeting" },
-        "Trice": { "city": "Washington, D.C.", "home": false, "note": "CDC NCIRD – final session" }
+        "Doug":     { "city": "San Francisco, CA",   "home": true,  "note": "" },
+        "Michelle": { "city": "San Francisco, CA",   "home": true,  "note": "" },
+        "Rebecca":  { "city": "Austin, TX",          "home": false, "note": "Temporal client meeting" },
+        "Trice":    { "city": "Washington, D.C.",    "home": false, "note": "CDC NCIRD – final session" },
+        "Meghan":   { "city": "Santa Barbara, CA",   "home": true,  "note": "" },
+        "Julianne": { "city": "Sacramento, CA",      "home": true,  "note": "" },
+        "Austin":   { "city": "Seattle, WA",         "home": true,  "note": "" }
       }
     },
     {
       "weekStart": "2026-06-22",
       "weekLabel": "Jun 22–26",
       "locations": {
-        "Doug": { "city": "Boston, MA", "home": false, "note": "Rula Health offsite" },
-        "Michelle": { "city": "San Francisco, CA", "home": true, "note": "" },
-        "Rebecca": { "city": "San Francisco, CA", "home": true, "note": "" },
-        "Trice": { "city": "San Francisco, CA", "home": true, "note": "" }
+        "Doug":     { "city": "Boston, MA",          "home": false, "note": "Rula Health offsite" },
+        "Michelle": { "city": "San Francisco, CA",   "home": true,  "note": "" },
+        "Rebecca":  { "city": "Seattle, WA",         "home": true,  "note": "" },
+        "Trice":    { "city": "Atlanta, GA",          "home": true,  "note": "" },
+        "Meghan":   { "city": "Santa Barbara, CA",   "home": true,  "note": "" },
+        "Julianne": { "city": "Sacramento, CA",      "home": true,  "note": "" },
+        "Austin":   { "city": "Seattle, WA",         "home": true,  "note": "" }
       }
     },
     {
       "weekStart": "2026-06-29",
       "weekLabel": "Jun 29–Jul 3",
       "locations": {
-        "Doug": { "city": "San Francisco, CA", "home": true, "note": "" },
-        "Michelle": { "city": "San Francisco, CA", "home": true, "note": "" },
-        "Rebecca": { "city": "San Francisco, CA", "home": true, "note": "" },
-        "Trice": { "city": "San Francisco, CA", "home": true, "note": "" }
+        "Doug":     { "city": "San Francisco, CA",   "home": true,  "note": "" },
+        "Michelle": { "city": "San Francisco, CA",   "home": true,  "note": "" },
+        "Rebecca":  { "city": "Seattle, WA",         "home": true,  "note": "" },
+        "Trice":    { "city": "Atlanta, GA",          "home": true,  "note": "" },
+        "Meghan":   { "city": "Santa Barbara, CA",   "home": true,  "note": "" },
+        "Julianne": { "city": "Sacramento, CA",      "home": true,  "note": "" },
+        "Austin":   { "city": "Seattle, WA",         "home": true,  "note": "" }
       }
     },
     {
       "weekStart": "2026-07-06",
       "weekLabel": "Jul 6–10",
       "locations": {
-        "Doug": { "city": "Chicago, IL", "home": false, "note": "Amentum offsite" },
-        "Michelle": { "city": "San Francisco, CA", "home": true, "note": "" },
-        "Rebecca": { "city": "New York, NY", "home": false, "note": "Scopely check-in" },
-        "Trice": { "city": "San Francisco, CA", "home": true, "note": "" }
+        "Doug":     { "city": "Chicago, IL",         "home": false, "note": "Amentum offsite" },
+        "Michelle": { "city": "San Francisco, CA",   "home": true,  "note": "" },
+        "Rebecca":  { "city": "New York, NY",        "home": false, "note": "Scopely check-in" },
+        "Trice":    { "city": "Atlanta, GA",          "home": true,  "note": "" },
+        "Meghan":   { "city": "Santa Barbara, CA",   "home": true,  "note": "" },
+        "Julianne": { "city": "Sacramento, CA",      "home": true,  "note": "" },
+        "Austin":   { "city": "Seattle, WA",         "home": true,  "note": "" }
       }
     },
     {
       "weekStart": "2026-07-13",
       "weekLabel": "Jul 13–17",
       "locations": {
-        "Doug": { "city": "San Francisco, CA", "home": true, "note": "" },
-        "Michelle": { "city": "San Francisco, CA", "home": true, "note": "" },
-        "Rebecca": { "city": "San Francisco, CA", "home": true, "note": "" },
-        "Trice": { "city": "San Francisco, CA", "home": true, "note": "" }
+        "Doug":     { "city": "San Francisco, CA",   "home": true,  "note": "" },
+        "Michelle": { "city": "San Francisco, CA",   "home": true,  "note": "" },
+        "Rebecca":  { "city": "Seattle, WA",         "home": true,  "note": "" },
+        "Trice":    { "city": "Atlanta, GA",          "home": true,  "note": "" },
+        "Meghan":   { "city": "Santa Barbara, CA",   "home": true,  "note": "" },
+        "Julianne": { "city": "Sacramento, CA",      "home": true,  "note": "" },
+        "Austin":   { "city": "Seattle, WA",         "home": true,  "note": "" }
       }
     }
   ]
