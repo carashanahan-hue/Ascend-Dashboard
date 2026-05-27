@@ -1,0 +1,26 @@
+# Place this file at the ROOT of your GitHub repo (not inside ascend-pod-site/).
+# If your repo already has an ascend-pod-site/ subfolder containing the site files,
+# this tells Netlify where to find everything.
+
+[build]
+  base      = "ascend-pod-site"
+  publish   = "ascend-pod-site"
+  functions = "ascend-pod-site/netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"
+
+[[redirects]]
+  from = "/api/*"
+  to   = "/.netlify/functions/:splat"
+  status = 200
+
+[[headers]]
+  for = "/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/data/*"
+  [headers.values]
+    Cache-Control = "public, max-age=300"
