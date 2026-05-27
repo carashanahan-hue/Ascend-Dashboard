@@ -72,43 +72,44 @@ exports.handler = async (event) => {
     const params = event.queryStringParameters || {};
     const ownerFilter = params.owner || 'all';
 
-    // Build filter groups for the deals search
-    const filterGroups = [];
+    // Unix timestamp (ms) for 2026-01-01 — only return deals created on or after this date
+    const CUTOFF_MS = new Date('2026-01-01T00:00:00Z').getTime();
 
-    // Filter by pipeline stage (exclude closed lost by default)
-    if (params.stage !== 'all') {
-      filterGroups.push({
-        filters: [
-          {
-            propertyName: 'dealstage',
-            operator: 'NEQ',
-            value: 'closedlost',
-          },
-        ],
-      });
-    }
+    // HubSpot search uses AND within a filterGroup and OR across filterGroups.
+    // We want ALL of these conditions to be true simultaneously, so put them
+    // in a single filterGroup as separate filters (AND logic).
+    const baseFilters = [
+      // Only 2026+ deals
+      {
+        propertyName: 'createdate',
+        operator: 'GTE',
+        value: String(CUTOFF_MS),
+      },
+      // Exclude closed lost
+      {
+        propertyName: 'dealstage',
+        operator: 'NEQ',
+        value: 'closedlost',
+      },
+    ];
 
-    // Filter by owner if specified
+    // Filter by owner if specified (env-var IDs required for this path)
     if (ownerFilter !== 'all') {
       const ownerId = OWNER_MAP[ownerFilter.toLowerCase()];
       if (ownerId) {
-        filterGroups.push({
-          filters: [
-            {
-              propertyName: 'hubspot_owner_id',
-              operator: 'EQ',
-              value: ownerId,
-            },
-          ],
+        baseFilters.push({
+          propertyName: 'hubspot_owner_id',
+          operator: 'EQ',
+          value: ownerId,
         });
       }
     }
 
     // Fetch deals from HubSpot Deals Search API
     const searchBody = {
-      filterGroups: filterGroups.length > 0 ? filterGroups : undefined,
+      filterGroups: [{ filters: baseFilters }],
       properties: DEAL_PROPERTIES.split(','),
-      sorts: [{ propertyName: 'closedate', direction: 'ASCENDING' }],
+      sorts: [{ propertyName: 'createdate', direction: 'DESCENDING' }],
       limit: 200,
     };
 
