@@ -754,7 +754,14 @@ async function loadPipeline() {
         const match = POD_NAMES.find(n => n.toLowerCase() === first.toLowerCase());
         return { ...d, stage: d.stage || '', podMember: match || d.podMember || 'Other' };
       })
-      .filter(d => !d.closeDate || new Date(d.closeDate) >= cutoff);
+      .filter(d => {
+        // Exclude lost deals
+        const stage = (d.stage || '').toLowerCase();
+        if (stage.includes('lost')) return false;
+        // Only show deals created on or after 1/1/2026
+        if (d.createDate && new Date(d.createDate) < cutoff) return false;
+        return true;
+      });
     renderPipeline(_allDeals);
     $('last-updated').textContent = 'Updated ' + now();
     $('footer-updated').textContent = 'Pipeline: live · Static data: ' + (window._staticDate || '—');
