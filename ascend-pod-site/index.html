@@ -1033,42 +1033,74 @@ function renderCoaching(data) {
   $('cs-team').textContent  = teamCount;
   $('cs-rum').textContent   = fmt$(totalRum);
 
-  let html = '';
-  for (const coach of coaches) {
-    const color = OWNER_COLORS[coach.coach] || '#999';
-    html += `
-      <div class="coaching-section">
-        <div class="coaching-header">
-          <span class="coaching-header__name" style="display:flex;align-items:center;gap:0.5rem;">
-            <span style="width:10px;height:10px;border-radius:50%;background:${color};display:inline-block;"></span>
-            ${coach.coach}
-          </span>
-          <span class="coaching-header__count">${coach.engagements.length} engagement${coach.engagements.length !== 1 ? 's' : ''}</span>
+  // ── Overview cards ─────────────────────────────────────────────
+  let overviewHtml = '<div class="partners-overview" style="margin-bottom:3rem;">';
+  for (const c of coaches) {
+    const color = OWNER_COLORS[c.coach] || '#999';
+    const cRum   = c.engagements.reduce((s, e) => s + (e.rum2026 || 0), 0);
+    const cExec  = c.engagements.filter(e => e.type.toLowerCase().includes('exec')).length;
+    const cTeam  = c.engagements.filter(e => e.type.toLowerCase().includes('team') || e.type.toLowerCase().includes('group')).length;
+    overviewHtml += `
+      <div class="partner-card">
+        <div class="partner-card__name">
+          <span style="width:10px;height:10px;border-radius:50%;background:${color};display:block;flex-shrink:0;"></span>
+          ${c.coach}
         </div>
-        <table class="data-table">
-          <thead><tr>
-            <th>Client / Coachee</th>
-            <th>Type</th>
-            <th>2026 RUM</th>
-            <th>Dates</th>
-            <th>Notes</th>
-          </tr></thead>
-          <tbody>`;
-    for (const e of coach.engagements) {
-      html += `<tr>
-        <td>
-          <div class="deal-name">${e.client}</div>
-          <div class="deal-sub">${e.coachee}</div>
-        </td>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
+          <div class="partner-stat">
+            <div class="partner-stat__val">${c.engagements.length}</div>
+            <div class="partner-stat__lbl">Engagements</div>
+          </div>
+          <div class="partner-stat" style="border-left:1px solid var(--warm-neutral);">
+            <div class="partner-stat__val">${fmt$(cRum)}</div>
+            <div class="partner-stat__lbl">2026 RUM</div>
+          </div>
+        </div>
+        <div style="margin-top:0.75rem;padding-top:0.75rem;border-top:1px solid var(--warm-neutral);font-size:var(--text-xs);color:var(--blue-gray);">
+          ${cExec} exec&nbsp;&nbsp;·&nbsp;&nbsp;${cTeam} team / group
+        </div>
+      </div>`;
+  }
+  overviewHtml += '</div>';
+
+  // ── Sub-tabs ───────────────────────────────────────────────────
+  let tabsHtml = '<div class="partner-tabs" id="coach-tabs">';
+  coaches.forEach((c, i) => {
+    tabsHtml += `<button class="partner-tab ${i === 0 ? 'active' : ''}" data-coach="${c.coach}" onclick="showCoach('${c.coach}')">${c.coach}</button>`;
+  });
+  tabsHtml += '</div><div id="coach-panes">';
+
+  coaches.forEach((c, i) => {
+    let rows = '';
+    for (const e of c.engagements) {
+      rows += `<tr>
+        <td><div class="deal-name">${e.client}</div><div class="deal-sub">${e.coachee}</div></td>
         <td><span class="badge badge--scoping">${e.type}</span></td>
-        <td class="money">${fmt$(e.rum2026)}</td>
+        <td class="money">${e.rum2026 > 0 ? fmt$(e.rum2026) : '<span class="text-muted">—</span>'}</td>
         <td class="text-muted text-xs">${fmtDate(e.startDate)} – ${fmtDate(e.endDate)}</td>
         <td class="text-muted text-xs">${e.notes || ''}</td>
       </tr>`;
     }
-    html += '</tbody></table></div>';
-  }
-  $('coaching-body').innerHTML = html;
+    tabsHtml += `
+      <div class="partner-pane ${i === 0 ? 'active' : ''}" id="cp-${c.coach}">
+        <table class="data-table">
+          <thead><tr>
+            <th>Client / Coachee</th><th>Type</th><th>2026 RUM</th><th>Dates</th><th>Notes</th>
+          </tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+      </div>`;
+  });
+
+  tabsHtml += '</div>';
+  $('coaching-body').innerHTML = overviewHtml + tabsHtml;
+}
+
+function showCoach(name) {
+  document.querySelectorAll('[data-coach]').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('#coach-panes .partner-pane').forEach(p => p.classList.remove('active'));
+  document.querySelector(`[data-coach="${name}"]`).classList.add('active');
+  $('cp-' + name).classList.add('active');
 }
 
 /* ── Travel Calendar ──────────────────────────────────────────── */
