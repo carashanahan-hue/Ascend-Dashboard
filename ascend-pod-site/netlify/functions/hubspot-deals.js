@@ -105,10 +105,17 @@ exports.handler = async (event) => {
       limit: 200,
     };
 
-    const response = await fetch(`${HUBSPOT_API_BASE}/crm/v3/objects/deals/search`, {
+    // Detect key type: Private App tokens start with "pat-"; legacy personal keys do not.
+    // Private App → Authorization: Bearer header
+    // Legacy personal API key → ?hapikey= query param
+    const isPrivateApp = apiKey.startsWith('pat-');
+    const authHeader = isPrivateApp ? { Authorization: `Bearer ${apiKey}` } : {};
+    const keyParam = isPrivateApp ? '' : `?hapikey=${encodeURIComponent(apiKey)}`;
+
+    const response = await fetch(`${HUBSPOT_API_BASE}/crm/v3/objects/deals/search${keyParam}`, {
       method: 'POST',
       headers: {
-        Authorization: `Bearer ${apiKey}`,
+        ...authHeader,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(searchBody),
@@ -134,8 +141,8 @@ exports.handler = async (event) => {
 
     let ownerNames = {};
     if (ownerIds.length > 0) {
-      const ownersRes = await fetch(`${HUBSPOT_API_BASE}/crm/v3/owners?limit=100`, {
-        headers: { Authorization: `Bearer ${apiKey}` },
+      const ownersRes = await fetch(`${HUBSPOT_API_BASE}/crm/v3/owners?limit=100${isPrivateApp ? '' : `&hapikey=${encodeURIComponent(apiKey)}`}`, {
+        headers: { ...authHeader },
       });
       if (ownersRes.ok) {
         const ownersData = await ownersRes.json();
